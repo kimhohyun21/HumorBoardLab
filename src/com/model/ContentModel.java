@@ -17,5 +17,4 @@ public class ContentModel implements Model{
 		
 		return "board/content.jsp";
 	}
-	
 }
