@@ -31,7 +31,7 @@ public class ListModel implements Model{
 		List<BoardDTO> list=dao.boardListData(curPage);
 		
 		//전체 페이지수 사용을 위한 파라미터
-		int totalPage=dao.boardTotal();
+		int totalPage=dao.boardTotalPage();
 		
 		//블럭 출력을 위한 변수 설정
 		int block=5;
