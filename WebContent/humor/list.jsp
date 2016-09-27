@@ -6,12 +6,12 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>게시판 리스트</title>
+	<title>유머 게시판</title>
 	<link rel="stylesheet" type="text/css" href="humor/table.css">
 </head>
 <body>
 	<div align="center">
-		<h3>목록보기</h3>
+		<h3>유머 게시판</h3>
 		<table class="button_table">
 			<tr>
 				<td>

@@ -8,7 +8,7 @@ public class BoardDTO {
 	private String subject;
 	private String content;
 	private String pwd;
-	private Date date;
+	private Date regdate;
 	private int hit;
 	private int group_id;
 	private int group_step;
@@ -48,11 +48,11 @@ public class BoardDTO {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	public Date getDate() {
-		return date;
+	public Date getRegdate() {
+		return regdate;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 	public int getHit() {
 		return hit;
