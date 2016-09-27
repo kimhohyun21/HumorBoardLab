@@ -31,8 +31,8 @@ public class DispatcherServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		try{
 			//beans를 읽어오기 위한 주소 값 받기
-			String path=config.getInitParameter("modelLocation");
-			
+			String path=config.getInitParameter("beansLocation");
+			System.out.println(path);
 			//주소값을 사용하기위한 build 생성(new instance로 생성 왜??)
 			DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
 			DocumentBuilder db=dbf.newDocumentBuilder();
@@ -44,7 +44,7 @@ public class DispatcherServlet extends HttpServlet {
 			Element root=doc.getDocumentElement();
 			
 			//DOM에서 node(bean)를 태그네임으로 읽어서 list에 저장
-			NodeList list=root.getElementsByTagName("beans");
+			NodeList list=root.getElementsByTagName("bean");
 			
 			//list에 저장된 내용(bean) 불러오기
 			for(int i=0;i<list.getLength();i++){
@@ -62,7 +62,7 @@ public class DispatcherServlet extends HttpServlet {
 				//==>메모리에 올라가면 해시값이 할당됨
 				//==>해당 class파일(ListModel.java)의 멤버 변수 메소드 활용 가능
 				Object obj=clsName.newInstance();
-				
+				System.out.println(obj);
 				//생성한 해시값을 해시맵으로 저장
 				clsMap.put(id, obj);
 			}
@@ -87,7 +87,7 @@ public class DispatcherServlet extends HttpServlet {
 			
 			//model에서 반환하는 주소 String 담기
 			String jsp=model.handlerRequest(request, response);
-			
+			System.out.println(jsp);
 			//jsp에 담기는 값이 .jsp로 끝나지 않는 경우를 대비하여 temp파일로 확장자명 받아서 비교
 			String temp=jsp.substring(jsp.lastIndexOf(".")+1);
 			if(temp.equals("do")){
