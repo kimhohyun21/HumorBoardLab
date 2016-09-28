@@ -103,4 +103,39 @@ public class BoardDAO {
 		}
 		return total;
 	}
+	
+	public BoardDTO boardContentData(int no){
+		BoardDTO dto=new BoardDTO();
+
+		try{
+			getConnection();
+
+			String sql="UPDATE humorboard SET hit=hit+1 WHERE no=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1,no);
+			ps.executeUpdate();
+			ps.close();
+
+			sql="SELECT no, anme, subject, content, regdate, hit FROM humorboard WHERE no=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1,no);
+			ResultSet rs= ps.executeQuery();
+			rs.next();
+
+			dto.setNo(rs.getInt(1));
+			dto.setName(rs.getString(2));
+			dto.setSubject(rs.getString(3));
+			dto.setContent(rs.getString(4));
+			dto.setRegdate(rs.getDate(5));
+			dto.setHit(rs.getInt(6));
+
+			rs.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
+
+		return dto;
+	}
 }

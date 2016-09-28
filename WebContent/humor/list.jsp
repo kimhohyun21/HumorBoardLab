@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div align="center">
-		<h3>유머 게시판</h3>
+		<h3>유머게시판</h3>
 		<table class="button_table">
 			<tr>
 				<td>
