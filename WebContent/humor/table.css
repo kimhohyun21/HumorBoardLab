@@ -1,4 +1,16 @@
 @CHARSET "EUC-KR";
+#title{
+	background-image: url("humor/img/title_bg.jpg");
+}
+h3{
+	color: white;
+}
+#content{
+	background-image: url("humor/img/content_bg.jpg");
+}
+#footer{
+	background-image: url("humor/img/footer_bg.jpg");
+}
 table{
 	font-size: 11pt;	
 }
@@ -6,6 +18,7 @@ table{
 	border-collapse: collapse;
 	width: 700px;
 	margin: 0px;
+	position : relative;
 }
 #content_table{
 	border-bottom: 2px solid black;
@@ -28,8 +41,26 @@ table{
 #content_table tr:NTH-CHILD(odd){
 	background-color: #d8eefa;
 }
-#content_table #left_td{
+#content_table .cont_tr:HOVER {
+	background-color: none;
+}
+#content_table .cont_tr {
+	background-color: #d8eefa;
+}
+#content_table #cont {
+	background-color: white;
+	padding: 10px;
 	text-align: left;
+	vertical-align: top;
+	height: 200px;
+}
+#content_table #left_td {
+	text-align: left;
+	padding-left: 10px;
+}
+.button_table #right_td {
+	text-align: right;
+	padding-top: 5px;
 }
 form, select, option{
 	font-weight: bolder;

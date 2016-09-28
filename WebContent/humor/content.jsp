@@ -29,19 +29,19 @@
 			</tr>
 			<tr height="27">
 				<th width="20%">제목</th>
-				<td width="30%" align="left" colspan="3">${dto.subject }</td>
+				<td id="left_td" colspan="3">${dto.subject }</td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td colspan="4" align="left" valign="top" height="200">
+				<td colspan="3" id="cont">
 					<pre>${dto.content }</pre>
 				</td>
 			</tr>
 		</table>
 		
-		<table border="0">
+		<table class="button_table">
 			<tr>
-				<td align="right">
+				<td id="right_td">
 					<a href="reply.do?no=${dto.no }&page=${page}">
 						<img src="humor/img/btn_reply.gif">
 					</a>

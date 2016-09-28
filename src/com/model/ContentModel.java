@@ -13,8 +13,11 @@ public class ContentModel implements Model{
 		
 		BoardDAO dao = new BoardDAO();
 		//boardContentData의 String 값을 Int 값으로 변환
-		BoardDTO dto = dao.boardCountData(Integer.parseInt(strNo));
+		BoardDTO dto = dao.boardContentData(Integer.parseInt(strNo));
 		
-		return "board/content.jsp";
+		request.setAttribute("page", strPage);
+		request.setAttribute("dto", dto);
+		
+		return "humor/content.jsp";
 	}
 }

@@ -116,7 +116,7 @@ public class BoardDAO {
 			ps.executeUpdate();
 			ps.close();
 
-			sql="SELECT no, anme, subject, content, regdate, hit FROM humorboard WHERE no=?";
+			sql="SELECT no, name, subject, content, regdate, hit FROM humorboard WHERE no=?";
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1,no);
 			ResultSet rs= ps.executeQuery();
