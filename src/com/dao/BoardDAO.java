@@ -7,7 +7,7 @@ import java.sql.*;
 public class BoardDAO {
 	private Connection conn;
 	private PreparedStatement ps;
-	private final String URL = "jdbc:oracle:thin:@211.238.142.81:1521:ORCL";
+	private final String URL = "jdbc:oracle:thin:@211.238.142.88:1521:ORCL";
 	public BoardDAO(){
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -18,7 +18,7 @@ public class BoardDAO {
 	
 	public void getConnection(){
 		try{
-			conn = DriverManager.getConnection(URL, "scott", "1234");
+			conn = DriverManager.getConnection(URL, "scott", "tiger");
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}
@@ -40,7 +40,7 @@ public class BoardDAO {
 			ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			
-			int rowSize = 5;
+			int rowSize = 10;
 			int i = 0;
 			int j = 0;
 			int pagecnt = (page*rowSize)-rowSize;
@@ -71,7 +71,7 @@ public class BoardDAO {
 		int total = 0;
 		try{
 			getConnection();
-			String sql = "SELECT CEIL(COUNT(*)/5) FROM humorboard";
+			String sql = "SELECT CEIL(COUNT(*)/10) FROM humorboard";
 			ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			rs.next();

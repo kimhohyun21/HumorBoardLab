@@ -12,18 +12,9 @@
 <body>
 	<div align="center">
 		<div id="title">
-			<h3>유머게시판</h3>
+			<h3>HUMOR BOARD</h3>
 		</div>
 		<div id="content">
-			<table class="button_table">
-				<tr>
-					<td>
-						<a href="insert.do">
-							<img alt="write button" src="humor/img/btn_write.gif">
-						</a>
-					</td>
-				</tr>
-			</table>
 			<table id="content_table">
 				<tr>
 					<th width="10%">번호</th>
@@ -70,7 +61,7 @@
 			</table>
 			<table class="button_table">
 				<tr>
-					<td align="right">
+					<td align="center">
 					<!-- 
 						[1][2][3][4][5][6]
 						fp			tp	
@@ -119,10 +110,16 @@
 				 	&nbsp;
 				 	${curPage }page / ${totalPage }page 
 					</td>
+					<td class="right_td">
+						<a href="insert.do">
+							<img alt="write button" src="humor/img/btn_write.png" class="btn_icon">
+						</a>
+					</td>
 				</tr>
 			</table>	
 		</div>		
 		<div id="footer">
+			<span>&copy;2016 Shin Eun Hye, Kim Ho Hyun, Park Jung Hwan, Jun Jin Tae.</span>
 		</div>
 	</div>
 </body>
