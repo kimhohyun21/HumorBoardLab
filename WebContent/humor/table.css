@@ -1,15 +1,27 @@
 @CHARSET "EUC-KR";
-#title{
-	background-image: url("humor/img/title_bg.jpg");
+html, body, div, head{
+	margin: 0px;
+	padding: 0px;
 }
-h3{
+#title{
+	background: url("img/title_bg.jpg") center center;
+	background-size: cover;
+	height: 200px;
+	vertical-align: middle;
+}
+#title h3{
 	color: white;
+	vertical-align: middle;
 }
 #content{
-	background-image: url("humor/img/content_bg.jpg");
+	background: url("img/content_bg.jpg") center center;
+	background-size: cover;
+	height: 600px;
 }
 #footer{
-	background-image: url("humor/img/footer_bg.jpg");
+	background: url("img/footer_bg.jpg") center center;
+	background-size: cover;
+	height: 100px;
 }
 table{
 	font-size: 11pt;	
