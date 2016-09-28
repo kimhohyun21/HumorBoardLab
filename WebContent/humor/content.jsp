@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>상세 보기</title>
 <link rel="stylesheet" type="text/css" href="humor/table.css">
 </head>
 <body>
