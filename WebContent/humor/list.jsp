@@ -6,8 +6,8 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>게시판 리스트</title>
-	<link rel="stylesheet" type="text/css" href="board/table.css">
+	<title>유머 게시판</title>
+	<link rel="stylesheet" type="text/css" href="humor/table.css">
 </head>
 <body>
 	<div align="center">
@@ -16,7 +16,7 @@
 			<tr>
 				<td>
 					<a href="insert.do">
-						<img alt="write button" src="board/img/btn_write.gif">
+						<img alt="write button" src="humor/img/btn_write.gif">
 					</a>
 				</td>
 			</tr>
@@ -45,7 +45,7 @@
 					<c:forEach var="blank" begin="1" end="${dto.group_tab }">
 						&nbsp;
 					</c:forEach>
-					<img src="board/img/icon_reply.gif">
+					<img src="humor/img/icon_reply.gif">
 				</c:if>
 				<c:if test="${dto.subject==msg }">
 					<font color="red">${dto.subject }</font>
@@ -56,7 +56,7 @@
 					</a>
 				</c:if>					
 				<c:if test="${dto.dbday==today }">
-					<sup><img src="board/img/icon_new (2).gif"></sup>
+					<sup><img src="humor/img/icon_new (2).gif"></sup>
 				</c:if>	
 				</td>
 				<td width="15%">${dto.name }</td>
@@ -73,17 +73,17 @@
 					fp			tp	
 				 -->
 			 	<a href="list.do?page=1">
-			 		<img src="board/img/begin.gif">
+			 		<img src="humor/img/begin.gif">
 			 	</a>
 			 	<!-- 기본적으로는 5페이지 단위로 페이지 이동, 처음 블록과 마지막 블록에서만 1페이지씩 이동 -->
 				<c:if test="${curPage>block }">
 					<a href="list.do?page=${fromPage-1}">
-						<img src="board/img/prev.gif">				 		
+						<img src="humor/img/prev.gif">				 		
 				 	</a>
 				</c:if>	
 				<c:if test="${curPage<=block }">
 					<a href="list.do?page=${curPage>1 ? curPage-1 : 1 }">
-						<img src="board/img/prev.gif">				 		
+						<img src="humor/img/prev.gif">				 		
 				 	</a>
 				</c:if>
 				<c:forEach var="i" begin="${fromPage }" end="${toPage }">
@@ -102,16 +102,16 @@
 				</c:forEach>
 				<c:if test="${toPage<totalPage }">
 					<a href="list.do?page=${toPage+1 }">
-						<img src="board/img/next.gif">				 		
+						<img src="humor/img/next.gif">				 		
 				 	</a>
 				</c:if>
 				<c:if test="${toPage>=totalPage }">
 					<a href="list.do?page=${curPage<totalPage ? curPage+1 : totalPage }">
-						<img src="board/img/next.gif">				 		
+						<img src="humor/img/next.gif">				 		
 				 	</a>
 				</c:if>
 				<a href="list.do?page=${totalPage }">
-			 		<img src="board/img/end.gif">
+			 		<img src="humor/img/end.gif">
 			 	</a>
 			 	&nbsp;
 			 	${curPage }page / ${totalPage }page 
