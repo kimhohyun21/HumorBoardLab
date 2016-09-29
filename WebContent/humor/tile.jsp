@@ -7,12 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>타일 보기</title>
-<link rel="stylesheet" type="text/css" href="humor/table2.css">
+<link rel="stylesheet" type="text/css" href="humor/table.css">
 </head>
 <body>
    <center>
    	<div id="header">
-		<h3>HUMOR BOARD</h3>
+		<h3><a href="cover.do" class="h3">HUMOR BOARD</a></h3>
 	</div>
 	<div id="article">
 		<table width="1500" id="table_content">
@@ -22,17 +22,17 @@
 		         <table>
 		            <tr height="100" class="tdimg">
 		               <td>
-		                  <a href="humor/content.jsp">${dto.subject }</a>
+		                  <a href="content.do?page=${curPage }&no=${dto.no }">${dto.subject }</a>
 		                  <c:if test="${dto.dbday==today }">
 		                          <sup><img src="humor/img/icon_new (2).gif"></sup>
 		                        </c:if>   
 		               </td>
 		            </tr>
 		            <tr height="60"> 
-		               <td align="right" >-${dto.name }-</td>
+		               <td align="center" >${dto.name }</td>
 		            </tr>
 		            <tr height="40">
-		               <td>
+		               <td align="center">
 		                  <img src="humor/img/like.png" width="35" height="35">
 		               ${dto.hot }</td>
 		            </tr>
@@ -46,19 +46,19 @@
 		         <table>
 		            <tr height="100" class="tdimg">
 		               <td>
-		                  <a href="humor/content.jsp">${dto.subject }</a>
+		                  <a href="content.do">${dto.subject }</a>
 		                  <c:if test="${dto.dbday==today }">
 		                  	<sup><img src="humor/img/icon_new (2).gif"></sup>
 		                  </c:if>   
 		               </td>
 		            </tr>
 		            <tr height="60">
-		               <td align="right">-${dto.name }-</td>
+		               <td align="center">${dto.name }</td>
 		            </tr>
 		            <tr height="40">
-		               <td>
+		               <td align="center">
 		                  <img src="humor/img/like.png" width="35" height="35">   
-		               	  ${dto.no }
+		               	  ${dto.hot }
 		               </td>
 		            </tr>
 		         </table>
@@ -68,7 +68,7 @@
 		
 		<table id="button_table" width="1500">
 	      <tr>
-	         <td align="center">
+	         <td width="90%" align="center">
 	         <!-- 
 	            [1][2][3][4][5][6]
 	            fp         tp   
@@ -118,8 +118,8 @@
 	         ${curPage }page / ${totalPage }page
 	         </td>
 	         <td align="right">
-	            <a href="humor/insert.jsp"><img src="humor/img/insert.png" width="30" height="30"></a>
-	            <a href="humor/list.jsp"><img src="humor/img/list.png" width="30" height="30"></a>
+	            <a href="insert.do"><img src="humor/img/btn_write.png" title="글쓰기" class="btn_icon"></a>
+	            <a href="list.do"><img src="humor/img/btn_list.png" title="리스트 보기" class="btn_icon"></a>
 	         </td>
 	      </tr>
 	   </table>

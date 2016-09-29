@@ -46,7 +46,7 @@
 <body>
 	<div align="center">
 		<div id="header">
-			<h3>HUMOR BOARD</h3>
+			<h3><a href="cover.do" class="h3">HUMOR BOARD</a></h3>
 		</div>
 		<div id="article">
 			<form action="insert_ok.do" method="post" name="frm" id="frm">

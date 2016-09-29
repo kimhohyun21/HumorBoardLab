@@ -12,7 +12,7 @@
 <body>
 	<center>
 		<div id="header">
-			<h3>HUMOR</h3>
+			<h3><a href="cover.do" class="h3">HUMOR BOARD</a></h3>
 		</div>
 		<div id="article">
 			<table id="content_table" width="1000px">

@@ -72,7 +72,7 @@ public class BoardDAO {
 	      List<BoardDTO> list = new ArrayList<>();
 	      try{
 	         getConnection();
-	         String sql = "SELECT subject, name, hot FROM humorboard ORDER BY group_id DESC, group_step ASC";
+	         String sql = "SELECT no, subject, name, hot FROM humorboard ORDER BY group_id DESC, group_step ASC";
 	         ps = conn.prepareStatement(sql);
 	         ResultSet rs = ps.executeQuery();
 	         
@@ -83,9 +83,10 @@ public class BoardDAO {
 	         while(rs.next()){
 	            if(i<rowSize && j>=pagecnt){
 	               BoardDTO dto = new BoardDTO();
-	               dto.setSubject(rs.getString(1));
-	               dto.setName(rs.getString(2));
-	               dto.setHot(rs.getInt(3));
+	               dto.setNo(rs.getInt(1));
+	               dto.setSubject(rs.getString(2));
+	               dto.setName(rs.getString(3));
+	               dto.setHot(rs.getInt(4));
 	               list.add(dto);
 	               i++;
 	            }
