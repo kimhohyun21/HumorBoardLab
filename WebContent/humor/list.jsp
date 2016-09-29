@@ -15,26 +15,37 @@
 			<h3><a href="cover.do" class="h3">HUMOR BOARD</a></h3>
 		</div>
 		<div id="article">
+			<table width="1500px" class="button_table">
+				<tr>
+					<td>
+						<a href="tile.do?page=${curPage }">
+							<button class="btn_list">
+								<img alt="tile" title="타일형" src="humor/img/tile_icon.png" class="btn_icon">
+								<span class="text_block valign">타일형 보기</span>
+							</button>
+						</a>
+						<a href="list.do?page=${curPage }">
+							<button class="btn_list click">
+								<img alt="list" title="리스트형" src="humor/img/list_icon.png" class="btn_icon">
+								<span class="text_block valign">리스트형 보기</span>
+							</button>
+						</a>
+					</td>
+				</tr>
+			</table>
 			<table id="content_table" width="1500px">
 				<tr>
-					<th width="10%">번호</th>
+					<th width="5%">번호</th>
 					<th width="45%">제목</th>
-					<th width="15%">이름</th>
+					<th width="10%">이름</th>
 					<th width="20%">작성일</th>
-					<th width="10%">조회수</th>				
+					<th	width="15%">추천수</th>
+					<th width="5%">조회수</th>				
 				</tr>
 			<c:forEach var="dto" items="${list }">
 				<tr>
-					<td width="10%">${dto.no }</td>
+					<td width="5%">${dto.no }</td>
 					<td width="45%" id="left_td">
-					<!-- group_tab : 몇 번째 단계의 답변인지 나타내는 컬럼
-						
-						 새로운 글      		   0
-						   |	
-						   --답변 1		   1
-						   	  |
-						   	  -- 답변 1의 답변   2						
-					 -->
 					<c:if test="${dto.group_tab!=0 }">
 						<c:forEach var="blank" begin="1" end="${dto.group_tab }">
 							&nbsp;
@@ -53,66 +64,66 @@
 						<sup><img src="humor/img/icon_new (2).gif"></sup>
 					</c:if>	
 					</td>
-					<td width="15%">${dto.name }</td>
+					<td width="10%">${dto.name }</td>
 					<td width="20%">${dto.regdate }</td>
-					<td width="10%">${dto.hit }</td>		
+					<td width="15%">
+						<progress></progress>
+					</td>
+					<td width="5%">${dto.hit }</td>		
 				</tr>
 			</c:forEach>
 			</table>
 			<table class="button_table" width="1500px">
 				<tr>
-					<td align="center">
-					<!-- 
-						[1][2][3][4][5][6]
-						fp			tp	
-					 -->
-				 	<a href="list.do?page=1">
-				 		<img src="humor/img/begin.gif">
-				 	</a>
-				 	<!-- 기본적으로는 5페이지 단위로 페이지 이동, 처음 블록과 마지막 블록에서만 1페이지씩 이동 -->
+					<td width="90%" align="center">
+					      <!-- 
+					  [1][2][3][4][5][6]
+					  fp         tp   
+					-->
+					<a href="list.do?page=1">
+					   <button class="btn_normal2">&lt;&lt; first</button>  
+					</a>
+					<!-- 기본적으로는 5페이지 단위로 페이지 이동, 처음 블록과 마지막 블록에서만 1페이지씩 이동 -->
 					<c:if test="${curPage>block }">
-						<a href="list.do?page=${fromPage-1}">
-							<img src="humor/img/prev.gif">				 		
-					 	</a>
-					</c:if>	
+					<a href="list.do?page=${fromPage-1}">
+					  	 <button class="btn_normal2">&lt; prev</button>                    
+					  </a>
+					</c:if>   
 					<c:if test="${curPage<=block }">
-						<a href="list.do?page=${curPage>1 ? curPage-1 : 1 }">
-							<img src="humor/img/prev.gif">				 		
-					 	</a>
+					  <a href="list.do?page=${curPage>1 ? curPage-1 : 1 }">
+					     <button class="btn_normal2">&lt; prev</button>                   
+					  </a>
 					</c:if>
 					<c:forEach var="i" begin="${fromPage }" end="${toPage }">
-					 	[
-						<c:if test="${curPage==i }">
-							<font color="red">
-								${i }
-							</font>				 	
-					 	</c:if>
-					 	<c:if test="${curPage!=i }">
-					 		<a href="list.do?page=${i }">
-					 			${i }
-					 		</a>
-					 	</c:if>	
-					 	]
+					  <c:if test="${curPage==i }">
+					     <button class="btn_select">${i }</button>               
+					  </c:if>
+					  <c:if test="${curPage!=i }">
+					     	<a href="list.do?page=${i }">
+					     		<button class="btn_normal">${i }</button>
+					     	</a>
+					  </c:if>   
 					</c:forEach>
 					<c:if test="${toPage<totalPage }">
-						<a href="list.do?page=${toPage+1 }">
-							<img src="humor/img/next.gif">				 		
-					 	</a>
+					  <a href="list.do?page=${toPage+1 }">
+					  	<button class="btn_normal2">next &gt;</button>                    
+					  </a>
 					</c:if>
 					<c:if test="${toPage>=totalPage }">
-						<a href="list.do?page=${curPage<totalPage ? curPage+1 : totalPage }">
-							<img src="humor/img/next.gif">				 		
-					 	</a>
+					  <a href="list.do?page=${curPage<totalPage ? curPage+1 : totalPage }">
+					  	<button class="btn_normal2">next &gt;</button>                  
+					  </a>
 					</c:if>
 					<a href="list.do?page=${totalPage }">
-				 		<img src="humor/img/end.gif">
-				 	</a>
-				 	&nbsp;
-				 	${curPage }page / ${totalPage }page 
+					  	<button class="btn_normal2">last &gt;&gt;</button>   
+					</a>
+					&nbsp;
+					<span class="text_block">${curPage }page / ${totalPage }page</span>
 					</td>
 					<td class="right_td">
 						<a href="insert.do">
-							<img alt="write button" src="humor/img/btn_write.png" class="btn_icon">
+							<img src="humor/img/btn_write.png" title="글쓰기" class="btn_icon">
+					        <span class="text_block valign">글쓰기</span>
 						</a>
 					</td>
 				</tr>

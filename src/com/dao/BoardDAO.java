@@ -7,7 +7,7 @@ import java.sql.*;
 public class BoardDAO {
 	private Connection conn;
 	private PreparedStatement ps;
-	private final String URL = "jdbc:oracle:thin:@211.238.142.81:1521:ORCL";
+	private final String URL = "jdbc:oracle:thin:@localhost:1521:ORCL";
 	public BoardDAO(){
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -18,7 +18,7 @@ public class BoardDAO {
 	
 	public void getConnection(){
 		try{
-			conn = DriverManager.getConnection(URL, "scott", "1234");
+			conn = DriverManager.getConnection(URL, "scott", "tiger");
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}
@@ -72,7 +72,7 @@ public class BoardDAO {
 	      List<BoardDTO> list = new ArrayList<>();
 	      try{
 	         getConnection();
-	         String sql = "SELECT no, subject, name, hot FROM humorboard ORDER BY group_id DESC, group_step ASC";
+	         String sql = "SELECT no, subject, name, TO_CHAR(regdate, 'YYYY-MM-DD'), hot FROM humorboard ORDER BY group_id DESC, group_step ASC";
 	         ps = conn.prepareStatement(sql);
 	         ResultSet rs = ps.executeQuery();
 	         
@@ -86,7 +86,8 @@ public class BoardDAO {
 	               dto.setNo(rs.getInt(1));
 	               dto.setSubject(rs.getString(2));
 	               dto.setName(rs.getString(3));
-	               dto.setHot(rs.getInt(4));
+	               dto.setDbday(rs.getString(4));
+	               dto.setHot(rs.getInt(5));
 	               list.add(dto);
 	               i++;
 	            }

@@ -52,7 +52,7 @@
 							<img src="humor/img/btn_delete.png" title="삭제" class="btn_icon">
 						</a>
 						&nbsp;&nbsp;
-						<a href="list.do?&page=${page}">
+						<a href="list.do?page=${page}">
 							<img src="humor/img/btn_list.png" title="리스트" class="btn_icon">
 						</a>
 					</td>
