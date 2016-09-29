@@ -11,11 +11,11 @@
 </head>
 <body>
 	<div align="center">
-		<div id="title">
+		<div id="header">
 			<h3>HUMOR BOARD</h3>
 		</div>
-		<div id="content">
-			<table id="content_table">
+		<div id="article">
+			<table id="content_table" width="1500px">
 				<tr>
 					<th width="10%">번호</th>
 					<th width="45%">제목</th>
@@ -59,7 +59,7 @@
 				</tr>
 			</c:forEach>
 			</table>
-			<table class="button_table">
+			<table class="button_table" width="1500px">
 				<tr>
 					<td align="center">
 					<!-- 

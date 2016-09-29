@@ -18,8 +18,15 @@ public class BoardDTO {
 	private String msg;
 	private String today;
 	private String dbday;
+	private int hot;
 	public int getNo() {
 		return no;
+	}
+	public int getHot() {
+		return hot;
+	}
+	public void setHot(int hot) {
+		this.hot = hot;
 	}
 	public void setNo(int no) {
 		this.no = no;

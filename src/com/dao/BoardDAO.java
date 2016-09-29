@@ -7,7 +7,7 @@ import java.sql.*;
 public class BoardDAO {
 	private Connection conn;
 	private PreparedStatement ps;
-	private final String URL = "jdbc:oracle:thin:@211.238.142.88:1521:ORCL";
+	private final String URL = "jdbc:oracle:thin:@211.238.142.81:1521:ORCL";
 	public BoardDAO(){
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -18,7 +18,7 @@ public class BoardDAO {
 	
 	public void getConnection(){
 		try{
-			conn = DriverManager.getConnection(URL, "scott", "tiger");
+			conn = DriverManager.getConnection(URL, "scott", "1234");
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}
@@ -36,7 +36,7 @@ public class BoardDAO {
 		List<BoardDTO> list = new ArrayList<>();
 		try{
 			getConnection();
-			String sql = "SELECT no, subject, name, regdate, hit, group_tab, TO_CHAR(regdate, 'YYYY-MM-DD') FROM humorboard ORDER BY group_id DESC, group_step ASC";
+			String sql = "SELECT no, subject, name, regdate, hit, group_tab, TO_CHAR(regdate, 'YYYY-MM-DD'), hot FROM humorboard ORDER BY group_id DESC, group_step ASC";
 			ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			
@@ -54,6 +54,7 @@ public class BoardDAO {
 					dto.setHit(rs.getInt(5));
 					dto.setGroup_tab(rs.getInt(6));
 					dto.setDbday(rs.getString(7));
+					dto.setHot(rs.getInt(8));
 					list.add(dto);
 					i++;
 				}
@@ -66,6 +67,37 @@ public class BoardDAO {
 		}
 		return list;
 	}
+	
+	public List<BoardDTO> boardTileData(int page){
+	      List<BoardDTO> list = new ArrayList<>();
+	      try{
+	         getConnection();
+	         String sql = "SELECT subject, name, hot FROM humorboard ORDER BY group_id DESC, group_step ASC";
+	         ps = conn.prepareStatement(sql);
+	         ResultSet rs = ps.executeQuery();
+	         
+	         int rowSize = 10;
+	         int i = 0;
+	         int j = 0;
+	         int pagecnt = (page*rowSize)-rowSize;
+	         while(rs.next()){
+	            if(i<rowSize && j>=pagecnt){
+	               BoardDTO dto = new BoardDTO();
+	               dto.setSubject(rs.getString(1));
+	               dto.setName(rs.getString(2));
+	               dto.setHot(rs.getInt(3));
+	               list.add(dto);
+	               i++;
+	            }
+	            j++;
+	         }
+	      }catch(Exception ex){
+	         System.out.println(ex.getMessage());
+	      }finally{
+	         disConnection();
+	      }
+	      return list;
+	   }
 	
 	public int boardTotalPage(){
 		int total = 0;
@@ -137,5 +169,84 @@ public class BoardDAO {
 		}
 
 		return dto;
+	}
+	
+	//insert
+	public void boardInsert(BoardDTO dto){
+		try{
+			getConnection();
+			
+			String sql="INSERT INTO humorboard (no, name, subject, content, pwd, group_id) "
+						+ "VALUES((SELECT NVL((MAX(no)+1), 1) FROM humorboard), ?, ?, ?, ?, "
+						+ "(SELECT NVL((MAX(group_id)+1), 1) FROM humorboard))";
+			
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, dto.getName());
+			ps.setString(2, dto.getSubject());
+			ps.setString(3, dto.getContent());
+			ps.setString(4, dto.getPwd());
+			ps.executeUpdate();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
+	}
+	
+	//reply
+	public void boardReply(int no, BoardDTO dto){
+		try{
+			getConnection();
+			
+			//답변이 달리는 글의 gi, gs, gt 정보 가져오기
+			String sql="SELECT group_id, group_step, group_tab FROM board WHERE no=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, no);
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			
+			int gi=rs.getInt(1);
+			int gs=rs.getInt(2);
+			int gt=rs.getInt(3);
+			
+			rs.close();
+			ps.close();
+			
+			//group_step 설정
+			sql="UPDATE board SET group_step=group_step+1 "
+				+ "WHERE group_id=? AND group_step>?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, gi);
+			ps.setInt(2, gs);
+			ps.executeUpdate();
+			ps.close();
+			
+			//depth 설정
+			sql="UPDATE board SET depth=depth+1 WHERE no=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, no);
+			ps.executeUpdate();
+			ps.close();
+			
+			//reply insert
+			sql="INSERT INTO board (no, name, subject, content, pwd, group_id, group_step, group_tab, root) "
+				+ "VALUES((SELECT NVL(MAX(no)+1, 1) FROM board), ?, ?, ?, ?, ?, ?, ?, ?)";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, dto.getName());
+			ps.setString(2, dto.getSubject());
+			ps.setString(3, dto.getContent());
+			ps.setString(4, dto.getPwd());
+			ps.setInt(5, gi);
+			ps.setInt(6, gs+1);
+			ps.setInt(7, gt+1);
+			ps.setInt(8, no);
+			ps.executeUpdate();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
 	}
 }

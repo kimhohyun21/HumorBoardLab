@@ -88,8 +88,15 @@ public class DispatcherServlet extends HttpServlet {
 			//model에서 반환하는 주소 String 담기
 			String jsp=model.handlerRequest(request, response);
 			System.out.println(jsp);
+			
 			//jsp에 담기는 값이 .jsp로 끝나지 않는 경우를 대비하여 temp파일로 확장자명 받아서 비교
 			String temp=jsp.substring(jsp.lastIndexOf(".")+1);
+			
+			//?page= or no 등의 파라미터 값도 한번 더 잘라주기 위해서 
+			if(!temp.equals("do") && !temp.equals("jsp")){
+				temp=temp.substring(0, temp.lastIndexOf("?"));
+			}
+			
 			if(temp.equals("do")){
 				//.jsp가 아닌경우는 다시 jsp로 보내주기
 				response.sendRedirect(jsp);

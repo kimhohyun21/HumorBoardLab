@@ -11,50 +11,57 @@
 </head>
 <body>
 	<center>
-		<h3>유머</h3>
-		<table id="content_table">
-			<tr height="27">
-				<th width="20%">번호</th>
-				<td width="30%" align="center">${dto.no }</td>
-				
-				<th width="20%">작성일</th>
-				<td width="30%" align="center">${dto.regdate }</td>
-			</tr>
-			<tr height="27">
-				<th width="20%">이름</th>
-				<td width="30%" align="center">${dto.name }</td>
-				
-				<th width="20%">조회수</th>
-				<td width="30%" align="center">${dto.hit }</td>
-			</tr>
-			<tr height="27">
-				<th width="20%">제목</th>
-				<td id="left_td" colspan="3">${dto.subject }</td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td colspan="3" id="cont">
-					<pre>${dto.content }</pre>
-				</td>
-			</tr>
-		</table>
-		
-		<table class="button_table">
-			<tr>
-				<td id="right_td">
-					<a href="reply.do?no=${dto.no }&page=${page}">
-						<img src="humor/img/btn_reply.gif">
-					</a>
-					<img src="humor/img/btn_modify.gif">
-					<a href="delete.do?no=${dto.no }&page=${page}">
-						<img src="humor/img/btn_delete.gif">
-					</a>
-					<a href="list.do?&page=${page}">
-						<img src="humor/img/btn_list.gif">
-					</a>
-				</td>
-			</tr>
-		</table>
+		<div id="header">
+			<h3>HUMOR</h3>
+		</div>
+		<div id="article">
+			<table id="content_table" width="1000px">
+				<tr class="cont_tr">
+					<th width="20%">번호</th>
+					<td width="30%">${dto.no }</td>
+					
+					<th width="20%">작성일</th>
+					<td width="30%">${dto.regdate }</td>
+				</tr>
+				<tr class="cont_tr">
+					<th width="20%">이름</th>
+					<td width="30%">${dto.name }</td>
+					
+					<th width="20%">조회수</th>
+					<td width="30%">${dto.hit }</td>
+				</tr>
+				<tr class="cont_tr">
+					<th width="20%">제목</th>
+					<td id="left_td" colspan="3">${dto.subject }</td>
+				</tr>
+				<tr>
+					<td colspan="4" id="cont">${dto.content }</td>
+				</tr>
+			</table>			
+			<table class="button_table" width="1000px">
+				<tr>
+					<td align="right">
+						<a href="reply.do?no=${dto.no }&page=${page}">
+							<img src="humor/img/btn_reply.png" title="리플" class="btn_icon">
+						</a>&nbsp;&nbsp;
+						<a href="modify.do?no=${dto.no }&page=${page}">
+							<img src="humor/img/btn_modify.png" title="수정" class="btn_icon">
+						</a>						
+						&nbsp;&nbsp;
+						<a href="delete.do?no=${dto.no }&page=${page}">
+							<img src="humor/img/btn_delete.png" title="삭제" class="btn_icon">
+						</a>
+						&nbsp;&nbsp;
+						<a href="list.do?&page=${page}">
+							<img src="humor/img/btn_list.png" title="리스트" class="btn_icon">
+						</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="footer">
+			<span>&copy;2016 Shin Eun Hye, Kim Ho Hyun, Park Jung Hwan, Jun Jin Tae.</span>
+		</div>
 	</center>
 </body>
 </html>
