@@ -7,7 +7,7 @@ import java.sql.*;
 public class BoardDAO {
 	private Connection conn;
 	private PreparedStatement ps;
-	private final String URL = "jdbc:oracle:thin:@211.238.142.88:1521:ORCL";
+	private final String URL = "jdbc:oracle:thin:@211.238.142.81:1521:ORCL";
 	public BoardDAO(){
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -18,7 +18,7 @@ public class BoardDAO {
 	
 	public void getConnection(){
 		try{
-			conn = DriverManager.getConnection(URL, "scott", "tiger");
+			conn = DriverManager.getConnection(URL, "scott", "1234");
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}
@@ -250,5 +250,76 @@ public class BoardDAO {
 		}finally{
 			disConnection();
 		}
+	}
+	
+	//delete
+	public boolean boardDelete(int no, String pwd) {
+		boolean bCheck =false;
+		
+		try {
+			getConnection();
+			
+			//Password 체크
+			String sql = "SELECT pwd FROM humorboard WHERE no=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, no);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			String db_pwd = rs.getString(1);
+			rs.close();
+			ps.close();
+			
+			if(db_pwd.equals(pwd)) {
+				bCheck = true;
+				
+				sql = "SELECT root,depth FROM humorboard WHERE no=?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, no);
+				rs = ps.executeQuery();
+				rs.next();
+				int root = rs.getInt(1);
+				int depth = rs.getInt(2);
+				rs.close();
+				ps.close();
+				
+				if(depth == 0) {
+					//Delete
+					sql = "DELETE FROM humorboard WHERE no=?";
+					ps = conn.prepareStatement(sql);
+					ps.setInt(1, no);
+					ps.executeUpdate();
+					ps.close();
+					
+				} else {	
+					//Update
+					sql = "UPDATE humorboard SET subject=?,content=? WHERE no=?";
+					String msg = "관리자에 의해서 삭제된 게시물입니다.";
+					ps = conn.prepareStatement(sql);
+					ps.setString(1, msg);
+					ps.setString(2, msg);
+					ps.setInt(3, no);
+					ps.executeUpdate();
+					ps.close();
+					
+				}
+				
+				//depth
+				sql = "UPDATE humorboard SET depth=depth-1 WHERE no=?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, root);
+				ps.executeUpdate();
+				
+			} else {
+				bCheck = false;
+			}
+			
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		} finally {
+			disConnection();
+		}
+		
+		return bCheck;
+		
 	}
 }

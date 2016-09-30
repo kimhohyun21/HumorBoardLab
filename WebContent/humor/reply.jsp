@@ -94,7 +94,7 @@
 			</form>
 		</div>		
 		<div id="footer">
-			<span>&copy;2016 Shin Eun Hye, Kim Ho Hyun, Park Jung Hwan, Jun Jin Tae.</span>
+			<span>&copy;2016 Shin Eun Hye, Kim Ho Hyun, Park Jung Hwan, Jeon Jin Tae.</span>
 		</div>
 	</div>
 </body>

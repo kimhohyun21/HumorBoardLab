@@ -7,8 +7,12 @@ public class DeleteModel implements Model {
 
 	@Override
 	public String handlerRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String no=request.getParameter("no");
+		String page=request.getParameter("page");
+		request.setAttribute("no", no);
+		request.setAttribute("page", page);
 		
-		return "list.do";
+		return "humor/delete.jsp";
 	}
 
 }
