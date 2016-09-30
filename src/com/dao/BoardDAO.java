@@ -7,7 +7,7 @@ import java.sql.*;
 public class BoardDAO {
 	private Connection conn;
 	private PreparedStatement ps;
-	private final String URL = "jdbc:oracle:thin:@211.238.142.88:1521:ORCL";
+	private final String URL = "jdbc:oracle:thin:@211.238.142.81:1521:ORCL";
 	public BoardDAO(){
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -18,7 +18,7 @@ public class BoardDAO {
 	
 	public void getConnection(){
 		try{
-			conn = DriverManager.getConnection(URL, "scott", "tiger");
+			conn = DriverManager.getConnection(URL, "scott", "1234");
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}
@@ -202,21 +202,21 @@ public class BoardDAO {
 			getConnection();
 			
 			//답변이 달리는 글의 gi, gs, gt 정보 가져오기
-			String sql="SELECT group_id, group_step, group_tab FROM board WHERE no=?";
+			String sql="SELECT group_id, group_step, group_tab FROM humorboard WHERE no=?";
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, no);
 			ResultSet rs=ps.executeQuery();
 			rs.next();
-			
+
 			int gi=rs.getInt(1);
 			int gs=rs.getInt(2);
 			int gt=rs.getInt(3);
-			
+
 			rs.close();
 			ps.close();
 			
 			//group_step 설정
-			sql="UPDATE board SET group_step=group_step+1 "
+			sql="UPDATE humorboard SET group_step=group_step+1 "
 				+ "WHERE group_id=? AND group_step>?";
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, gi);
@@ -225,15 +225,15 @@ public class BoardDAO {
 			ps.close();
 			
 			//depth 설정
-			sql="UPDATE board SET depth=depth+1 WHERE no=?";
+			sql="UPDATE humorboard SET depth=depth+1 WHERE no=?";
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, no);
 			ps.executeUpdate();
 			ps.close();
 			
 			//reply insert
-			sql="INSERT INTO board (no, name, subject, content, pwd, group_id, group_step, group_tab, root) "
-				+ "VALUES((SELECT NVL(MAX(no)+1, 1) FROM board), ?, ?, ?, ?, ?, ?, ?, ?)";
+			sql="INSERT INTO humorboard (no, name, subject, content, pwd, group_id, group_step, group_tab, root) "
+				+ "VALUES((SELECT NVL(MAX(no)+1, 1) FROM humorboard), ?, ?, ?, ?, ?, ?, ?, ?)";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, dto.getName());
 			ps.setString(2, dto.getSubject());

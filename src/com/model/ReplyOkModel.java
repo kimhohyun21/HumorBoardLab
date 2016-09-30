@@ -31,7 +31,7 @@ public class ReplyOkModel implements Model {
 		BoardDAO dao=new BoardDAO();
 		dao.boardReply(no, dto);
 		
-		return "humor/list.jsp?page="+strPage;
+		return "list.do?page="+strPage;
 	}
 
 }
