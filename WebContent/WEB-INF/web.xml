@@ -6,7 +6,7 @@
   	<servlet-class>com.controller.DispatcherServlet</servlet-class>
   	<init-param>
   		<param-name>beansLocation</param-name>
-  		<param-value>C:\webProjects\webLab3\HumorBoardLab\WebContent\WEB-INF\beans.xml</param-value>
+  		<param-value>C:\webProjects\webLab2\HumorBoardLab\WebContent\WEB-INF\beans.xml</param-value>
   	</init-param>
   </servlet>
   <servlet-mapping>
