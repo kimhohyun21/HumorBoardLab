@@ -96,7 +96,7 @@ public class DispatcherServlet extends HttpServlet {
 			if(!temp.equals("do") && !temp.equals("jsp")){
 				temp=temp.substring(0, temp.lastIndexOf("?"));
 			}
-			
+			System.out.println(temp);
 			if(temp.equals("do")){
 				//.jsp가 아닌경우는 다시 jsp로 보내주기
 				response.sendRedirect(jsp);

@@ -150,7 +150,7 @@ public class BoardDAO {
 			ps.executeUpdate();
 			ps.close();
 
-			sql="SELECT no, name, subject, content, regdate, hit FROM humorboard WHERE no=?";
+			sql="SELECT no, name, subject, content, regdate, hit, hot FROM humorboard WHERE no=?";
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1,no);
 			ResultSet rs= ps.executeQuery();
@@ -162,6 +162,7 @@ public class BoardDAO {
 			dto.setContent(rs.getString(4));
 			dto.setRegdate(rs.getDate(5));
 			dto.setHit(rs.getInt(6));
+			dto.setHot(rs.getInt(7));
 
 			rs.close();
 		}catch(Exception e){
@@ -202,21 +203,21 @@ public class BoardDAO {
 			getConnection();
 			
 			//답변이 달리는 글의 gi, gs, gt 정보 가져오기
-			String sql="SELECT group_id, group_step, group_tab FROM board WHERE no=?";
+			String sql="SELECT group_id, group_step, group_tab FROM humorboard WHERE no=?";
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, no);
 			ResultSet rs=ps.executeQuery();
 			rs.next();
-			
+
 			int gi=rs.getInt(1);
 			int gs=rs.getInt(2);
 			int gt=rs.getInt(3);
-			
+
 			rs.close();
 			ps.close();
 			
 			//group_step 설정
-			sql="UPDATE board SET group_step=group_step+1 "
+			sql="UPDATE humorboard SET group_step=group_step+1 "
 				+ "WHERE group_id=? AND group_step>?";
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, gi);
@@ -225,15 +226,15 @@ public class BoardDAO {
 			ps.close();
 			
 			//depth 설정
-			sql="UPDATE board SET depth=depth+1 WHERE no=?";
+			sql="UPDATE humorboard SET depth=depth+1 WHERE no=?";
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, no);
 			ps.executeUpdate();
 			ps.close();
 			
 			//reply insert
-			sql="INSERT INTO board (no, name, subject, content, pwd, group_id, group_step, group_tab, root) "
-				+ "VALUES((SELECT NVL(MAX(no)+1, 1) FROM board), ?, ?, ?, ?, ?, ?, ?, ?)";
+			sql="INSERT INTO humorboard (no, name, subject, content, pwd, group_id, group_step, group_tab, root) "
+				+ "VALUES((SELECT NVL(MAX(no)+1, 1) FROM humorboard), ?, ?, ?, ?, ?, ?, ?, ?)";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, dto.getName());
 			ps.setString(2, dto.getSubject());
@@ -252,6 +253,22 @@ public class BoardDAO {
 		}
 	}
 	
+	public void boardHotData(int no){
+		try{
+			getConnection();
+
+			String sql="UPDATE humorboard SET hot=hot+1 WHERE no=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1,no);
+			ps.executeUpdate();
+			ps.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
+	}
 	//delete
 	public boolean boardDelete(int no, String pwd) {
 		boolean bCheck =false;
@@ -320,6 +337,5 @@ public class BoardDAO {
 		}
 		
 		return bCheck;
-		
 	}
 }
