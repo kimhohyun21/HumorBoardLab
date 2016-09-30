@@ -67,7 +67,7 @@
 					<td width="10%">${dto.name }</td>
 					<td width="20%">${dto.regdate }</td>
 					<td width="15%">
-						<progress value="${dto.hot }" max="100"></progress>
+						<progress value="${dto.hot }" max="500"></progress>
 					</td>
 					<td width="5%">${dto.hit }</td>		
 				</tr>
