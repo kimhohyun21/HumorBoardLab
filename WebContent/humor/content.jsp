@@ -41,7 +41,9 @@
 			<table class="button_table" width="1000px">
 				<tr>
 					<td align="left">
-		                <img src="humor/img/like.png" width="35" height="35">   
+						<a href="hot.do?page=${page }&no=${dto.no }">
+		                	<img src="humor/img/like.png" width="35" height="35">   
+		                </a>
 		            	<span class="text_block valign">${dto.hot }</span>
 		            </td>
 					<td align="right">

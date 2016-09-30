@@ -7,7 +7,7 @@ import java.sql.*;
 public class BoardDAO {
 	private Connection conn;
 	private PreparedStatement ps;
-	private final String URL = "jdbc:oracle:thin:@211.238.142.88:1521:ORCL";
+	private final String URL = "jdbc:oracle:thin:@211.238.142.81:1521:ORCL";
 	public BoardDAO(){
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -18,7 +18,7 @@ public class BoardDAO {
 	
 	public void getConnection(){
 		try{
-			conn = DriverManager.getConnection(URL, "scott", "tiger");
+			conn = DriverManager.getConnection(URL, "scott", "1234");
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}
@@ -150,7 +150,7 @@ public class BoardDAO {
 			ps.executeUpdate();
 			ps.close();
 
-			sql="SELECT no, name, subject, content, regdate, hit FROM humorboard WHERE no=?";
+			sql="SELECT no, name, subject, content, regdate, hit, hot FROM humorboard WHERE no=?";
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1,no);
 			ResultSet rs= ps.executeQuery();
@@ -162,6 +162,7 @@ public class BoardDAO {
 			dto.setContent(rs.getString(4));
 			dto.setRegdate(rs.getDate(5));
 			dto.setHit(rs.getInt(6));
+			dto.setHot(rs.getInt(7));
 
 			rs.close();
 		}catch(Exception e){
@@ -244,6 +245,23 @@ public class BoardDAO {
 			ps.setInt(7, gt+1);
 			ps.setInt(8, no);
 			ps.executeUpdate();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
+	}
+	
+	public void boardHotData(int no){
+		try{
+			getConnection();
+
+			String sql="UPDATE humorboard SET hot=hot+1 WHERE no=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1,no);
+			ps.executeUpdate();
+			ps.close();
 			
 		}catch(Exception e){
 			e.printStackTrace();
