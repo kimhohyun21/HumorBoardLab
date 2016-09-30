@@ -33,7 +33,7 @@
 					</td>
 				</tr>
 			</table>
-			<table id="content_table" width="1500px">
+			<table id="list_table" width="1500px">
 				<tr>
 					<th width="5%">번호</th>
 					<th width="45%">제목</th>
@@ -67,7 +67,7 @@
 					<td width="10%">${dto.name }</td>
 					<td width="20%">${dto.regdate }</td>
 					<td width="15%">
-						<progress></progress>
+						<progress value="${dto.hot }" max="100"></progress>
 					</td>
 					<td width="5%">${dto.hit }</td>		
 				</tr>

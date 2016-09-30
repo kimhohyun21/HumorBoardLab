@@ -40,20 +40,28 @@
 			</table>			
 			<table class="button_table" width="1000px">
 				<tr>
+					<td align="left">
+		                <img src="humor/img/like.png" width="35" height="35">   
+		            	<span class="text_block valign">${dto.hot }</span>
+		            </td>
 					<td align="right">
 						<a href="reply.do?no=${dto.no }&page=${page}">
 							<img src="humor/img/btn_reply.png" title="리플" class="btn_icon">
+							<span class="text_block valign">리플</span>
 						</a>&nbsp;&nbsp;
 						<a href="modify.do?no=${dto.no }&page=${page}">
 							<img src="humor/img/btn_modify.png" title="수정" class="btn_icon">
+							<span class="text_block valign">수정</span>
 						</a>						
 						&nbsp;&nbsp;
 						<a href="delete.do?no=${dto.no }&page=${page}">
 							<img src="humor/img/btn_delete.png" title="삭제" class="btn_icon">
+							<span class="text_block valign">삭제</span>
 						</a>
 						&nbsp;&nbsp;
 						<a href="list.do?page=${page}">
 							<img src="humor/img/btn_list.png" title="리스트" class="btn_icon">
+							<span class="text_block valign">리스트</span>
 						</a>
 					</td>
 				</tr>

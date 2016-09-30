@@ -49,6 +49,13 @@
 			<h3>HUMOR BOARD</h3>
 		</div>
 		<div id="article">
+			<table width="1500px" class="button_table">
+				<tr>
+					<td align="center">
+						<font size="5px" color="gray">[ 답글 쓰기 ]</font>
+					</td>
+				</tr>
+			</table>
 			<form action="reply_ok.do?page=${page }&no=${no }" method="post" name="frm" id="frm">
 				<table id="insert_table" width="1000px">
 					<tr>
@@ -76,11 +83,11 @@
 						</td>
 					</tr>
 				</table>
-				<table id="button_table" width="1000px">
+				<table class="button_table" width="1000px">
 					<tr>
 						<td align="center">
-							<input type="button" value="답변하기" id="sendBtn">
-							<input type="reset" value="취소" onclick="javascript:history.back()">
+							<input type="button" value="글쓰기" id="sendBtn" class="btn_normal2">
+							<input type="reset" value="취소" onclick="javascript:history.back()" class="btn_normal2">
 						</td>
 					</tr>
 				</table>
