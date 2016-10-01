@@ -12,13 +12,15 @@ public class DeleteOkModel implements Model{
 		String pwd = request.getParameter("pwd");
 		String no = request.getParameter("no");
 		String page = request.getParameter("page");
+		String plist = request.getParameter("list");
 		
 		//DB ¿¬µ¿
 		BoardDAO dao = new BoardDAO();
-		Boolean bCheck=dao.boardDelete(Integer.parseInt(no),pwd);
+		Boolean bCheck=dao.boardDelete(Integer.parseInt(no),pwd);		
 		
 		request.setAttribute("bCheck", bCheck);
 		request.setAttribute("page", page);
+		request.setAttribute("plist", plist);
 		
 		return "humor/delete_ok.jsp";
 	}

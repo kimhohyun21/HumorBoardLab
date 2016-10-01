@@ -13,18 +13,20 @@ public class HotModel implements Model {
 		BoardDAO dao=new BoardDAO();
 		
 		String strNo=request.getParameter("no");
-		String strPage=request.getParameter("page"); 
+		String strPage=request.getParameter("page");
+		String plist=request.getParameter("list");
 		if(strPage==null){strPage="1"; }
 		int curPage=Integer.parseInt(strPage);
 		
 		
-		dao.boardHotData(Integer.parseInt(strNo));
-		BoardDTO dto=dao.boardContentData(Integer.parseInt(strNo));
-				
+		BoardDTO dto=dao.boardHotData(Integer.parseInt(strNo));
+		
+		
 		request.setAttribute("page", curPage);
 		request.setAttribute("dto", dto);
+		request.setAttribute("plist", plist);
 		
-		return "humor/content.jsp?page="+curPage+"&no="+strNo;
+		return "humor/content.jsp?page="+curPage+"&no="+strNo+"&list="+plist;
 	}
 
 }

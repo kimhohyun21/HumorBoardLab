@@ -43,7 +43,11 @@
 					<th width="5%">조회수</th>				
 				</tr>
 			<c:forEach var="dto" items="${list }">
-				<tr>
+			<c:set var="tr_id" value="normal"></c:set>
+			<c:if test="${dto.subject==msg }">
+				<c:set var="tr_id" value="delete_tr"></c:set>
+			</c:if>	
+				<tr id="${tr_id }">
 					<td width="5%">${dto.no }</td>
 					<td width="45%" id="left_td">
 					<c:if test="${dto.group_tab!=0 }">
@@ -53,16 +57,16 @@
 						<img src="humor/img/icon_reply.gif">
 					</c:if>
 					<c:if test="${dto.subject==msg }">
-						<font color="red">${dto.subject }</font>
+						${dto.subject }
 					</c:if>
 					<c:if test="${dto.subject!=msg }">
-						<a href="content.do?no=${dto.no }&page=${curPage}">
+						<a href="content.do?no=${dto.no }&page=${curPage}&list=${plist }">
 							${dto.subject }
 						</a>
+						<c:if test="${dto.dbday==today }">
+							<sup><img src="humor/img/icon_new (2).gif"></sup>
+						</c:if>	
 					</c:if>					
-					<c:if test="${dto.dbday==today }">
-						<sup><img src="humor/img/icon_new (2).gif"></sup>
-					</c:if>	
 					</td>
 					<td width="10%">${dto.name }</td>
 					<td width="20%">${dto.regdate }</td>
@@ -121,7 +125,7 @@
 					<span class="text_block">${curPage }page / ${totalPage }page</span>
 					</td>
 					<td class="right_td">
-						<a href="insert.do">
+						<a href="insert.do?list=${plist }">
 							<img src="humor/img/btn_write.png" title="글쓰기" class="btn_icon">
 					        <span class="text_block valign">글쓰기</span>
 						</a>

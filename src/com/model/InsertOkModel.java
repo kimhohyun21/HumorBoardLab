@@ -15,6 +15,7 @@ public class InsertOkModel implements Model {
 		String subject=request.getParameter("subject");
 		String content=request.getParameter("content");
 		String pwd=request.getParameter("pwd");
+		String plist=request.getParameter("list");
 		
 		BoardDTO dto=new BoardDTO();
 		dto.setName(name);
@@ -23,9 +24,15 @@ public class InsertOkModel implements Model {
 		dto.setPwd(pwd);
 		
 		BoardDAO dao=new BoardDAO();
-		dao.boardInsert(dto);		
+		dao.boardInsert(dto);	
 		
-		return "list.do";
+		String url=null;
+		if(plist.equals("1")){
+			url="tile.do";
+		}else{
+			url="list.do";
+		}
+		return url;
 	}
 	
 }

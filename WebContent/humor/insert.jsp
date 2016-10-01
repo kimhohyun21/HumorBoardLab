@@ -10,6 +10,16 @@
 	<script type="text/javascript">
 		$(function(){
 			$('#sendBtn').click(function(){
+				submit();
+			});
+			
+			$('input').keypress(function(key) {
+				if(key.keyCode == 13){
+					submit();
+				}
+			});
+			
+			submit=function(){
 				var name=$('#name').val();
 				if(name.trim()==""){
 					$('#name').focus();
@@ -39,7 +49,7 @@
 					return;
 				}
 				$('#frm').submit();
-			});
+			};
 		});
 	</script>
 </head>
@@ -56,7 +66,7 @@
 					</td>
 				</tr>
 			</table>
-			<form action="insert_ok.do" method="post" name="frm" id="frm">
+			<form action="insert_ok.do?list=${plist }" method="post" name="frm" id="frm">
 				<table id="insert_table" width="1000px">
 					<tr>
 						<th width="20%">¿Ã∏ß</th>

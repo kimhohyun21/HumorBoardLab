@@ -10,6 +10,16 @@
 	<script type="text/javascript">
 		$(function(){
 			$('#sendBtn').click(function(){
+				submit();
+			});
+			
+			$('input').keypress(function(key) {
+				if(key.keyCode == 13){
+					submit();
+				}
+			});
+			
+			submit=function(){
 				var name=$('#name').val();
 				if(name.trim()==""){
 					$('#name').focus();
@@ -39,7 +49,7 @@
 					return;
 				}
 				$('#frm').submit();
-			});
+			};
 		});
 	</script>
 </head>

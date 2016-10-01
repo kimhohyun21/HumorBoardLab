@@ -72,8 +72,10 @@ public class BoardDAO {
 	      List<BoardDTO> list = new ArrayList<>();
 	      try{
 	         getConnection();
-	         String sql = "SELECT no, subject, name, TO_CHAR(regdate, 'YYYY-MM-DD'), hot FROM humorboard ORDER BY group_id DESC, group_step ASC";
+	         String msg="관리자에 의해서 삭제된 게시물입니다.";
+	         String sql = "SELECT no, subject, name, TO_CHAR(regdate, 'YYYY-MM-DD'), hot FROM humorboard WHERE group_tab=0 AND subject<>? ORDER BY group_id DESC, group_step ASC";
 	         ps = conn.prepareStatement(sql);
+	         ps.setString(1, msg);
 	         ResultSet rs = ps.executeQuery();
 	         
 	         int rowSize = 10;
@@ -101,12 +103,20 @@ public class BoardDAO {
 	      return list;
 	   }
 	
-	public int boardTotalPage(){
+	public int boardTotalPage(String list){
 		int total = 0;
 		try{
 			getConnection();
-			String sql = "SELECT CEIL(COUNT(*)/10) FROM humorboard";
-			ps = conn.prepareStatement(sql);
+			String sql = null;
+			String msg="관리자에 의해서 삭제된 게시물입니다.";
+			if(list=="1"){
+				sql = "SELECT CEIL(COUNT(*)/10) FROM humorboard WHERE group_tab=0 AND subject<>?";
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, msg);
+			}else{
+				sql = "SELECT CEIL(COUNT(*)/10) FROM humorboard";
+				ps = conn.prepareStatement(sql);
+			}			
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			total = rs.getInt(1);
@@ -253,7 +263,9 @@ public class BoardDAO {
 		}
 	}
 	
-	public void boardHotData(int no){
+	public BoardDTO boardHotData(int no){
+		BoardDTO dto =new BoardDTO();
+		
 		try{
 			getConnection();
 
@@ -263,11 +275,29 @@ public class BoardDAO {
 			ps.executeUpdate();
 			ps.close();
 			
+			sql="SELECT no, name, subject, content, regdate, hit, hot FROM humorboard WHERE no=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1,no);
+			ResultSet rs= ps.executeQuery();
+			rs.next();
+
+			dto.setNo(rs.getInt(1));
+			dto.setName(rs.getString(2));
+			dto.setSubject(rs.getString(3));
+			dto.setContent(rs.getString(4));
+			dto.setRegdate(rs.getDate(5));
+			dto.setHit(rs.getInt(6));
+			dto.setHot(rs.getInt(7));
+
+			rs.close();
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
 			disConnection();
 		}
+		
+		return dto;
 	}
 	//delete
 	public boolean boardDelete(int no, String pwd) {
@@ -309,12 +339,14 @@ public class BoardDAO {
 					
 				} else {	
 					//Update
-					sql = "UPDATE humorboard SET subject=?,content=? WHERE no=?";
+					sql = "UPDATE humorboard SET subject=?, name=?, content=? WHERE no=?";
 					String msg = "관리자에 의해서 삭제된 게시물입니다.";
+					String name = "관리자";
 					ps = conn.prepareStatement(sql);
 					ps.setString(1, msg);
-					ps.setString(2, msg);
-					ps.setInt(3, no);
+					ps.setString(2, name);
+					ps.setString(3, msg);
+					ps.setInt(4, no);
 					ps.executeUpdate();
 					ps.close();
 					

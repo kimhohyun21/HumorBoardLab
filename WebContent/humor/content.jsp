@@ -41,7 +41,7 @@
 			<table class="button_table" width="1000px">
 				<tr>
 					<td align="left">
-						<a href="hot.do?page=${page }&no=${dto.no }">
+						<a href="hot.do?page=${page }&no=${dto.no }&list=${plist }">
 		                	<img src="humor/img/like.png" width="35" height="35">   
 		                </a>
 		            	<span class="text_block valign">${dto.hot }</span>
@@ -51,17 +51,21 @@
 							<img src="humor/img/btn_reply.png" title="리플" class="btn_icon">
 							<span class="text_block valign">리플</span>
 						</a>&nbsp;&nbsp;
-						<a href="modify.do?no=${dto.no }&page=${page }">
+						<a href="modify.do?no=${dto.no }&page=${page }&list=${plist }">
 							<img src="humor/img/btn_modify.png" title="수정" class="btn_icon">
 							<span class="text_block valign">수정</span>
 						</a>						
 						&nbsp;&nbsp;
-						<a href="delete.do?no=${dto.no }&page=${page }">
+						<a href="delete.do?no=${dto.no }&page=${page }&list=${plist }">
 							<img src="humor/img/btn_delete.png" title="삭제" class="btn_icon">
 							<span class="text_block valign">삭제</span>
 						</a>
 						&nbsp;&nbsp;
-						<a href="list.do?page=${page}">
+						<c:set var="url" value="list.do?page=${page }"></c:set>
+						<c:if test="${plist==1 }">
+							<c:set var="url" value="tile.do?page=${page }"></c:set>
+						</c:if>
+						<a href="${url }">						
 							<img src="humor/img/btn_list.png" title="리스트" class="btn_icon">
 							<span class="text_block valign">리스트</span>
 						</a>

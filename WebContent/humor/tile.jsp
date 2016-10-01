@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>타일 보기</title>
+	<title>유머 게시판</title>
 	<link rel="stylesheet" type="text/css" href="humor/table.css">
 </head>
 <body>
@@ -40,7 +40,7 @@
 		         <table>
 		            <tr height="100" class="tdimg">
 		               <td>
-		                  <a href="content.do?page=${curPage }&no=${dto.no }">${dto.subject }</a>
+		                  <a href="content.do?page=${curPage }&no=${dto.no }&list=${plist }">${dto.subject }</a>
 		                  <c:if test="${dto.dbday==today }">
 		                          <sup><img src="humor/img/icon_new (2).gif"></sup>
 		                  </c:if>   
@@ -64,7 +64,7 @@
 		         <table>
 		            <tr height="100" class="tdimg">
 		               <td>
-		                  <a href="content.do?page=${curPage }&no=${dto.no }">${dto.subject }</a>
+		                  <a href="content.do?page=${curPage }&no=${dto.no }&list=${plist }">${dto.subject }</a>
 		                  <c:if test="${dto.dbday==today }">
 		                  	<sup><img src="humor/img/icon_new (2).gif"></sup>
 		                  </c:if>   
@@ -132,7 +132,7 @@
 	          <span class="text_block">${curPage }page / ${totalPage }page</span>
 	          </td>
 	          <td align="center">
-	             <a href="insert.do">
+	             <a href="insert.do?list=${plist }">
 	            	<img src="humor/img/btn_write.png" title="글쓰기" class="btn_icon">
 	            	<span class="text_block valign">글쓰기</span>
 	             </a>

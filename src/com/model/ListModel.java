@@ -31,7 +31,8 @@ public class ListModel implements Model{
 		List<BoardDTO> list=dao.boardListData(curPage);
 		
 		//전체 페이지수 사용을 위한 파라미터
-		int totalPage=dao.boardTotalPage();
+		String plist="2";
+		int totalPage=dao.boardTotalPage(plist);
 		
 		//블럭 출력을 위한 변수 설정
 		int block=5;
@@ -48,6 +49,7 @@ public class ListModel implements Model{
 		request.setAttribute("block", block);
 		request.setAttribute("fromPage", fromPage);
 		request.setAttribute("toPage", toPage);
+		request.setAttribute("plist", plist);
 		
 		//list.jsp로 콜백
 		return "humor/list.jsp";

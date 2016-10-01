@@ -8,6 +8,9 @@ public class InsertModel implements Model {
 	@Override
 	public String handlerRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		String plist=request.getParameter("list");
+		request.setAttribute("plist", plist);
+		
 		return "humor/insert.jsp";
 	}
 
