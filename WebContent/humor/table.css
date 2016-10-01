@@ -3,6 +3,9 @@ html, body, div, h3, p, span, button{
 	margin: 0px;
 	padding: 0px;
 }
+html, body{
+	height: 100%;
+} 
 h3 {
 	position: relative;
 	top: 60px;
@@ -13,14 +16,19 @@ h3 {
 	background: url("img/title_bg.jpg") center center;
 	background-size: cover;
 	height: 200px;
+	width: 100%;
 }
 #article {
 	padding: 20px;
-	height: 650px;
+	max-width: 100%;
+
 }
 #footer {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
 	background: url("img/footer_bg.jpg") center center;
-	background-size: cover;
+	background-size: cover;	
 	height: 50px;
 	font-size: 15px;
 	font-style: italic;
@@ -72,14 +80,15 @@ table{
 	height: 30px;
 }
 #insert_table td {
-	border-bottom: 1px solid #e3e3e3;
 	height: 44px;
 	padding: 5px;
 }
 #list_table td, #content_table td, .del_table td{
-	border-bottom: 1px solid #e3e3e3;
 	text-align: center;
 	height: 44px;
+}
+#list_table td, .del_table td{
+	border-bottom: 1px solid #e3e3e3;
 }
 #list_table tr:HOVER {
 	background-color: #f2f2f2;
