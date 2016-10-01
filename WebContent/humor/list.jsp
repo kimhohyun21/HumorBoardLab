@@ -18,7 +18,7 @@
 			<table width="1500px" class="button_table">
 				<tr>
 					<td>
-						<a href="tile.do?page=${curPage }">
+						<a href="tile.do?page=${curPage>tileTotal ? tileTotal : curPage }">
 							<button class="btn_list">
 								<img alt="tile" title="타일형" src="humor/img/tile_icon.png" class="btn_icon">
 								<span class="text_block valign">타일형 보기</span>

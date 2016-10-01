@@ -22,7 +22,7 @@ public class ListModel implements Model{
 		int curPage=Integer.parseInt(strPage);
 		
 		//삭제된 게시물 관리를 위한 파라미터
-		String msg="관리자에 의해서 삭제된 게시물입니다.";
+		String msg="게시자에 의해서 삭제된 게시물입니다.";
 		
 		//new_icon생성을 위한 파라미터 
 		String today=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
@@ -33,6 +33,8 @@ public class ListModel implements Model{
 		//전체 페이지수 사용을 위한 파라미터
 		String plist="2";
 		int totalPage=dao.boardTotalPage(plist);
+		String tile="1";
+		int tileTotal=dao.boardTotalPage(tile);
 		
 		//블럭 출력을 위한 변수 설정
 		int block=5;
@@ -50,6 +52,7 @@ public class ListModel implements Model{
 		request.setAttribute("fromPage", fromPage);
 		request.setAttribute("toPage", toPage);
 		request.setAttribute("plist", plist);
+		request.setAttribute("tileTotal", tileTotal);
 		
 		//list.jsp로 콜백
 		return "humor/list.jsp";

@@ -15,34 +15,43 @@
 			<h3><a href="cover.do" class="h3">HUMOR BOARD</a></h3>
 		</div>
 		<div id="article">
+			<table width="1000px" class="button_table">
+				<tr>
+					<td align="center">
+						<span class="btn_title">상세보기</span>
+					</td>
+				</tr>
+			</table>
 			<table id="content_table" width="1000px">
-				<tr class="cont_tr">
+				<tr>
 					<th width="20%">번호</th>
 					<td width="30%">${dto.no }</td>
 					
 					<th width="20%">작성일</th>
 					<td width="30%">${dto.regdate }</td>
 				</tr>
-				<tr class="cont_tr">
+				<tr>
 					<th width="20%">이름</th>
 					<td width="30%">${dto.name }</td>
 					
 					<th width="20%">조회수</th>
 					<td width="30%">${dto.hit }</td>
 				</tr>
-				<tr class="cont_tr">
+				<tr>
 					<th width="20%">제목</th>
 					<td id="left_td" colspan="3">${dto.subject }</td>
 				</tr>
 				<tr>
-					<td colspan="4" id="cont">${dto.content }</td>
+					<td colspan="4" id="cont">
+						<pre>${dto.content }</pre>
+					</td>
 				</tr>
 			</table>			
 			<table class="button_table" width="1000px">
 				<tr>
 					<td align="left">
 						<a href="hot.do?page=${page }&no=${dto.no }&list=${plist }">
-		                	<img src="humor/img/like.png" width="35" height="35">   
+		                	<img src="humor/img/like.png" class="btn_icon">   
 		                </a>
 		            	<span class="text_block valign">${dto.hot }</span>
 		            </td>

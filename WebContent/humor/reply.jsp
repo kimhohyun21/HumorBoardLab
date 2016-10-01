@@ -59,10 +59,10 @@
 			<h3>HUMOR BOARD</h3>
 		</div>
 		<div id="article">
-			<table width="1500px" class="button_table">
+			<table width="1000px" class="button_table">
 				<tr>
 					<td align="center">
-						<font size="5px" color="gray">[ 답글 쓰기 ]</font>
+						<span class="btn_title">답글쓰기</span>
 					</td>
 				</tr>
 			</table>

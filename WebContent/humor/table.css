@@ -2,9 +2,6 @@
 html, body, div, h3, p, span, button{
 	margin: 0px;
 	padding: 0px;
-}
-html, body{
-	height: 100%;
 } 
 h3 {
 	position: relative;
@@ -16,11 +13,9 @@ h3 {
 	background: url("img/title_bg.jpg") center center;
 	background-size: cover;
 	height: 200px;
-	width: 100%;
 }
 #article {
 	padding: 20px;
-	max-width: 100%;
 
 }
 #footer {
@@ -77,25 +72,24 @@ table{
 	color: black;	
 	text-align: center;	
 	font-weight: bolder;
-	height: 30px;
+	height: 44px;
 }
 #insert_table td {
-	height: 44px;
-	padding: 5px;
+	border-bottom: 1px solid #cfcfcf;
+	padding: 5px 15px 5px 15px;
 }
-#list_table td, #content_table td, .del_table td{
+#list_table td, #insert_table th, #content_table th, #content_table td, .del_table td{
+	border-bottom: 1px solid #cfcfcf;
 	text-align: center;
 	height: 44px;
 }
-#list_table td, .del_table td{
-	border-bottom: 1px solid #e3e3e3;
-}
 #list_table tr:HOVER {
-	background-color: #f2f2f2;
+	background-color: #cfcfcf;
 }
-#list_table .cont_tr, #content_table .cont_tr, #insert_table tr {
-	border-bottom: 2px solid gray;
-	background-color: #f2f2f2;	
+#content_table tr, #insert_table tr {
+	border-bottom: 1px solid #cfcfcf;
+	background-color: #f2f2f2;
+	height: 44px;	
 }
 #list_table #cont, #content_table #cont {
 	background-color: white;
@@ -137,12 +131,20 @@ a:HOVER, a.h3:HOVER{
 	border: 1px solid gray;
 	background-color: white;
 	font-size: 11pt;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-left: 15px;
-	padding-right: 15px;
+	padding: 2px 15px 2px 15px;
 }
-.click{
+.btn_title {
+	font-size: 15pt;
+	font-weight: bolder;
+	font-style: italic;
+	border: 1px solid gray;
+	background-color: white;
+	-webkit-border-radius: 20px;
+	-mox-border-radius: 20px;
+	border-radius: 20px;
+	padding: 6px 30px 6px 30px;
+}
+.click, .btn_title {
 	box-shadow:1px 1px 5px 2px gray inset;
 }
 .btn_icon{
@@ -155,10 +157,7 @@ a:HOVER, a.h3:HOVER{
 	background-color: gray;
 	border: 1px solid gray;
 	color: white;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	padding-left: 15px;
-	padding-right: 15px;
+	padding: 5px 15px 5px 15px;
 	font-size: 15pt
 }
 .btn_select{
@@ -242,13 +241,18 @@ input[type="password"]{
     75%  { left:50px; }
     100% { left:0px; }
 }
-
 #tiletd{
    border: 1px solid #a9aeb2;
    -webkit-border-radius: 20px;
    -mox-border-radius: 20px;
    border-radius: 20px;
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   cursor: pointer;
+}
+#tiletd:HOVER {
+	opacity: 0.7;
+	border: 1px solid #e0e0e0;
+	box-shadow: 10px 8px 8px 0 rgba(0, 0, 0, 0.2), 10px 12px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .tdimg{
    background: url("img/sub_img.png") center;

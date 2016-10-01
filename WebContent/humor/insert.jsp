@@ -40,7 +40,7 @@
 					alert('내용을 입력하세요.');
 					$('#content').val("");
 					return;
-				}
+				}				
 				var pwd=$('#pwd').val();
 				if(pwd.trim()==""){
 					$('#pwd').focus();
@@ -59,10 +59,10 @@
 			<h3><a href="cover.do" class="h3">HUMOR BOARD</a></h3>
 		</div>
 		<div id="article">
-			<table width="1500px" class="button_table">
+			<table width="1000px" class="button_table">
 				<tr>
 					<td align="center">
-						<font size="5px" color="gray">[ 글쓰기 ]</font>
+						<span class="btn_title">글쓰기</span>
 					</td>
 				</tr>
 			</table>

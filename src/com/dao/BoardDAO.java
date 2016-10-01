@@ -72,7 +72,7 @@ public class BoardDAO {
 	      List<BoardDTO> list = new ArrayList<>();
 	      try{
 	         getConnection();
-	         String msg="관리자에 의해서 삭제된 게시물입니다.";
+	         String msg="게시자에 의해서 삭제된 게시물입니다.";
 	         String sql = "SELECT no, subject, name, TO_CHAR(regdate, 'YYYY-MM-DD'), hot FROM humorboard WHERE group_tab=0 AND subject<>? ORDER BY group_id DESC, group_step ASC";
 	         ps = conn.prepareStatement(sql);
 	         ps.setString(1, msg);
@@ -108,7 +108,7 @@ public class BoardDAO {
 		try{
 			getConnection();
 			String sql = null;
-			String msg="관리자에 의해서 삭제된 게시물입니다.";
+			String msg="게시자에 의해서 삭제된 게시물입니다.";
 			if(list=="1"){
 				sql = "SELECT CEIL(COUNT(*)/10) FROM humorboard WHERE group_tab=0 AND subject<>?";
 				ps = conn.prepareStatement(sql);
@@ -340,8 +340,8 @@ public class BoardDAO {
 				} else {	
 					//Update
 					sql = "UPDATE humorboard SET subject=?, name=?, content=? WHERE no=?";
-					String msg = "관리자에 의해서 삭제된 게시물입니다.";
-					String name = "관리자";
+					String msg = "게시자에 의해서 삭제된 게시물입니다.";
+					String name = "게시자";
 					ps = conn.prepareStatement(sql);
 					ps.setString(1, msg);
 					ps.setString(2, name);

@@ -35,12 +35,14 @@
 		</table>
 		<table width="1500" id="table_content">
 		   <tr height="200">
-		      <c:forEach var="dto" begin="0" end="4" step="1" items="${list }">
-		      <td id="tiletd">
+		      <c:forEach var="dto" begin="0" end="4" step="1" items="${list }">	
+		      <td id="tiletd" onclick="location.href='content.do?page=${curPage }&no=${dto.no }&list=${plist }'">     
 		         <table>
 		            <tr height="100" class="tdimg">
 		               <td>
-		                  <a href="content.do?page=${curPage }&no=${dto.no }&list=${plist }">${dto.subject }</a>
+		               	  <a href="content.do?page=${curPage }&no=${dto.no }&list=${plist }">	
+		                  	${dto.subject }
+		                  </a>
 		                  <c:if test="${dto.dbday==today }">
 		                          <sup><img src="humor/img/icon_new (2).gif"></sup>
 		                  </c:if>   
@@ -52,19 +54,22 @@
 		            <tr height="40">
 		               <td align="center">
 		                  <img src="humor/img/like.png" width="35" height="35">
-		               ${dto.hot }</td>
-		            </tr>
+		               	  <span class="text_block valign">${dto.hot }</span>
+		               </td>
+		            </tr>  
 		         </table>
-		      </td>
+		      </td> 
 		      </c:forEach>
 		   </tr>
 		   <tr height="200">
 		      <c:forEach var="dto" begin="5" end="9" step="1" items="${list }">
-		      <td width="300" id="tiletd">
+		      <td id="tiletd" onclick="location.href='content.do?page=${curPage }&no=${dto.no }&list=${plist }'">
 		         <table>
 		            <tr height="100" class="tdimg">
 		               <td>
-		                  <a href="content.do?page=${curPage }&no=${dto.no }&list=${plist }">${dto.subject }</a>
+		                  <a href="content.do?page=${curPage }&no=${dto.no }&list=${plist }">	
+		                  	${dto.subject }
+		                  </a>
 		                  <c:if test="${dto.dbday==today }">
 		                  	<sup><img src="humor/img/icon_new (2).gif"></sup>
 		                  </c:if>   
@@ -76,7 +81,7 @@
 		            <tr height="40">
 		               <td align="center">
 		                  <img src="humor/img/like.png" width="35" height="35">   
-		               	  ${dto.hot }
+		               	  <span class="text_block valign">${dto.hot }</span>
 		               </td>
 		            </tr>
 		         </table>
