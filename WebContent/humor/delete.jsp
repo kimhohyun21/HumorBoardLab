@@ -41,6 +41,8 @@
 						<input type="hidden" name="no" value="${no }">
 						<input type="hidden" name="page" value="${page }">
 						<input type="hidden" name="list" value="${plist }">
+						<input type="hidden" name="fs" value="${fs }">
+						<input type="hidden" name="fi" value="${fi }">
 					</td>
 				</tr>
 			</table>

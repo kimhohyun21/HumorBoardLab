@@ -12,7 +12,7 @@ public class UpdateOkModel implements Model {
 	@Override
 	public String handlerRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		request.setCharacterEncoding("EUC-KR");
+		request.setCharacterEncoding("UTF-8");
 		String plist=request.getParameter("list");
 		String strPage=request.getParameter("page");
 		String strNo=request.getParameter("no");
@@ -21,6 +21,8 @@ public class UpdateOkModel implements Model {
 		String subject=request.getParameter("subject");
 		String content=request.getParameter("content");
 		String pwd=request.getParameter("pwd");
+		String fs=request.getParameter("fs");
+		String fi=request.getParameter("fi");
 		
 		BoardDAO dao=new BoardDAO();
 		BoardDTO dto=new BoardDTO();
@@ -36,6 +38,8 @@ public class UpdateOkModel implements Model {
 		request.setAttribute("bCheck", bCheck);
 		request.setAttribute("page", strPage);
 		request.setAttribute("plist", plist);
+		request.setAttribute("fs", fs);
+		request.setAttribute("fi", fi);
 		
 		return "humor/update_ok.jsp";
 	}

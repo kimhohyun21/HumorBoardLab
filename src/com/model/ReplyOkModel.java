@@ -10,7 +10,7 @@ public class ReplyOkModel implements Model {
 
 	@Override
 	public String handlerRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("EUC-KR");
+		request.setCharacterEncoding("UTF-8");
 		String strPage=request.getParameter("page");
 		String strNo=request.getParameter("no");
 		int no=Integer.parseInt(strNo);

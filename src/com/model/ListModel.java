@@ -12,6 +12,7 @@ public class ListModel implements Model{
  */
 	@Override
 	public String handlerRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("UTF-8");
 		//메서드 사용을 위한 dao class생성
 		BoardDAO dao=new BoardDAO();
 		
@@ -21,6 +22,10 @@ public class ListModel implements Model{
 		if(strPage==null){strPage="1"; }
 		int curPage=Integer.parseInt(strPage);
 		
+		//검색을 위한 파라미터
+		String fs=request.getParameter("fs");
+		String fi=request.getParameter("fi");
+		
 		//삭제된 게시물 관리를 위한 파라미터
 		String msg="게시자에 의해서 삭제된 게시물입니다.";
 		
@@ -28,13 +33,13 @@ public class ListModel implements Model{
 		String today=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		
 		//게시물을 생성하기 위한 list 생성
-		List<BoardDTO> list=dao.boardListData(curPage);
+		List<BoardDTO> list=dao.boardListData(curPage, fs, fi);
 		
 		//전체 페이지수 사용을 위한 파라미터
 		String plist="2";
-		int totalPage=dao.boardTotalPage(plist);
+		int totalPage=dao.boardTotalPage(plist, fs, fi);
 		String tile="1";
-		int tileTotal=dao.boardTotalPage(tile);
+		int tileTotal=dao.boardTotalPage(tile, fs, fi);
 		
 		//블럭 출력을 위한 변수 설정
 		int block=5;
@@ -53,6 +58,8 @@ public class ListModel implements Model{
 		request.setAttribute("toPage", toPage);
 		request.setAttribute("plist", plist);
 		request.setAttribute("tileTotal", tileTotal);
+		request.setAttribute("fs", fs);
+		request.setAttribute("fi", fi);
 		
 		//list.jsp로 콜백
 		return "humor/list.jsp";

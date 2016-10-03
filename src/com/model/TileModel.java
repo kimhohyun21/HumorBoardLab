@@ -18,16 +18,19 @@ public class TileModel implements Model {
 		String strPage=request.getParameter("page"); 
 		if(strPage==null){strPage="1"; }
 		int curPage=Integer.parseInt(strPage);
-		  
+		//검색을 위한 파라미터
+		String fs=request.getParameter("fs");
+		String fi=request.getParameter("fi");
+		
 		//new_icon생성을 위한 파라미터 
 		String today=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		  
 		List<BoardDTO> list=dao.boardTileData(curPage);
-		  
+	
 		//전체 페이지수 사용을 위한 파라미터
 		String plist="1";
-		int totalPage=dao.boardTotalPage(plist);
-		  
+		int totalPage=dao.boardTotalPage(plist, fs, fi);
+  
 		//블럭 출력을 위한 변수 설정
 		int block=5;
 		int fromPage=(((curPage-1)/block)*block)+1;

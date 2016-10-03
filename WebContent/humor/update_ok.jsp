@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:if test="${bCheck==false }">
 	<script type="text/javascript">
-		alert("ºñ¹Ğ¹øÈ£°¡ Àß ¸øµÇ¾ú½À´Ï´Ù.");
+		alert("ë¹„ë°€ë²ˆí˜¸ê°€ ì˜ ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		history.back();
 	</script>
 </c:if>
 <c:if test="${bCheck==true }">
 	<script type="text/javascript">
-		alert("¼öÁ¤ µÇ¾ú½À´Ï´Ù.");
+		alert("ìˆ˜ì • ë˜ì—ˆìŠµë‹ˆë‹¤.");
 	</script>
 	<c:if test="${plist==1 }">
 		<script type="text/javascript">
@@ -17,6 +17,6 @@
 		</script>		
 	</c:if>
 	<script type="text/javascript">
-		location.href="list.do?page=${page }";
+		location.href="list.do?page=${page }&fs=${fs }&fi=${fi }";
 	</script>
 </c:if>

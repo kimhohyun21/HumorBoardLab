@@ -12,7 +12,7 @@
 		</script>
 	</c:if>
 	<script type="text/javascript">
-		location.href="list.do?page=${page }";
+		location.href="list.do?page=${page }&fs=${fs }&fi=${fi }";
 	</script>
 </c:if>
 

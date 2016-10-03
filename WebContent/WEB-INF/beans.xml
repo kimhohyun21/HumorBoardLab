@@ -12,5 +12,5 @@
 	<bean id="update_ok" class="com.model.UpdateOkModel"></bean>
 	<bean id="delete" class="com.model.DeleteModel"></bean>
 	<bean id="delete_ok" class="com.model.DeleteOkModel"></bean>
-	<bean id="hot" class="com.model.HotModel"></bean>	
+	<bean id="hot" class="com.model.HotModel"></bean>
 </beans>

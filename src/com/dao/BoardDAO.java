@@ -12,7 +12,7 @@ public class BoardDAO {
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		}catch(Exception ex){
-			System.out.println(ex.getMessage());
+			ex.printStackTrace();
 		}
 	}
 	
@@ -20,7 +20,7 @@ public class BoardDAO {
 		try{
 			conn = DriverManager.getConnection(URL, "scott", "tiger");
 		}catch(Exception ex){
-			System.out.println(ex.getMessage());
+			ex.printStackTrace();
 		}
 	}
 	public void disConnection(){
@@ -28,15 +28,27 @@ public class BoardDAO {
 			if(ps !=null) ps.close();
 			if(conn !=null) conn.close();
 		}catch(Exception ex){
-			System.out.println(ex.getMessage());
+			ex.printStackTrace();
 		}
 	}
 	
-	public List<BoardDTO> boardListData(int page){
+	public List<BoardDTO> boardListData(int page, String fs, String fi){
 		List<BoardDTO> list = new ArrayList<>();
 		try{
 			getConnection();
-			String sql = "SELECT no, subject, name, regdate, hit, group_tab, TO_CHAR(regdate, 'YYYY-MM-DD'), hot FROM humorboard ORDER BY group_id DESC, group_step ASC";
+			String sql = null;
+			System.out.println(fs);
+			if(fs==null && fi==null){
+				sql = "SELECT no, subject, name, regdate, hit, group_tab, TO_CHAR(regdate, 'YYYY-MM-DD'), hot "
+						+ "FROM humorboard ORDER BY group_id DESC, group_step ASC";
+			}else{
+				sql = "SELECT no, subject, name, regdate, hit, group_tab, TO_CHAR(regdate, 'YYYY-MM-DD'), hot "
+						+ "FROM humorboard "
+						+ "WHERE "+fs+" LIKE '%"+fi+"%' ORDER BY group_id DESC, group_step ASC";
+			}
+			
+			System.out.println(fi);
+			
 			ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			
@@ -61,7 +73,7 @@ public class BoardDAO {
 				j++;
 			}
 		}catch(Exception ex){
-			System.out.println(ex.getMessage());
+			ex.printStackTrace();
 		}finally{
 			disConnection();
 		}
@@ -96,33 +108,34 @@ public class BoardDAO {
 	            j++;
 	         }
 	      }catch(Exception ex){
-	         System.out.println(ex.getMessage());
+	         ex.printStackTrace();
 	      }finally{
 	         disConnection();
 	      }
 	      return list;
 	   }
 	
-	public int boardTotalPage(String list){
+	public int boardTotalPage(String list, String fs, String fi){
 		int total = 0;
 		try{
 			getConnection();
 			String sql = null;
 			String msg="게시자에 의해서 삭제된 게시물입니다.";
 			if(list=="1"){
-				sql = "SELECT CEIL(COUNT(*)/10) FROM humorboard WHERE group_tab=0 AND subject<>?";
-				ps = conn.prepareStatement(sql);
-				ps.setString(1, msg);
+				sql = "SELECT CEIL(COUNT(*)/10) FROM humorboard WHERE group_tab=0 AND subject<>'"+msg+"'";
+			}else if(fs!=null && fi!=null){
+				sql = "SELECT CEIL(COUNT(*)/10) FROM humorboard WHERE "+fs+" LIKE '%"+fi+"%'";
 			}else{
 				sql = "SELECT CEIL(COUNT(*)/10) FROM humorboard";
-				ps = conn.prepareStatement(sql);
-			}			
+			}
+			
+			ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			total = rs.getInt(1);
 			rs.close();
 		}catch(Exception ex){
-			System.out.println(ex.getMessage());
+			ex.printStackTrace();
 		}finally{
 			disConnection();
 		}
@@ -141,7 +154,7 @@ public class BoardDAO {
 			total = rs.getInt(1);
 			rs.close();
 		}catch(Exception ex){
-			System.out.println(ex.getMessage());
+			ex.printStackTrace();
 		}finally{
 			disConnection();
 		}
@@ -363,7 +376,7 @@ public class BoardDAO {
 			}
 			
 		} catch (Exception ex) {
-			System.out.println(ex.getMessage());
+			ex.printStackTrace();
 		} finally {
 			disConnection();
 		}

@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>±Û¾²±â</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>ê¸€ì“°ê¸°</title>
 	<link rel="stylesheet" type="text/css" href="humor/table.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript">
@@ -23,28 +23,28 @@
 				var name=$('#name').val();
 				if(name.trim()==""){
 					$('#name').focus();
-					alert('ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä.');
+					alert('ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”.');
 					$('#name').val("");
 					return;
 				}
 				var subject=$('#subject').val();
 				if(subject.trim()==""){
 					$('#subject').focus();
-					alert('Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä.');
+					alert('ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”.');
 					$('#subject').val("");
 					return;
 				}
 				var content=$('#content').val();
 				if(content.trim()==""){
 					$('#content').focus();
-					alert('³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä.');
+					alert('ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.');
 					$('#content').val("");
 					return;
 				}				
 				var pwd=$('#pwd').val();
 				if(pwd.trim()==""){
 					$('#pwd').focus();
-					alert('ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.');
+					alert('ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.');
 					$('#pwd').val("");
 					return;
 				}
@@ -62,32 +62,32 @@
 			<table width="1000px" class="button_table">
 				<tr>
 					<td align="center">
-						<span class="btn_title">±Û¾²±â</span>
+						<span class="btn_title">ê¸€ì“°ê¸°</span>
 					</td>
 				</tr>
 			</table>
 			<form action="insert_ok.do?list=${plist }" method="post" name="frm" id="frm">
 				<table id="insert_table" width="1000px">
 					<tr>
-						<th width="20%">ÀÌ¸§</th>
+						<th width="20%">ì´ë¦„</th>
 						<td>
 							<input type="text" size="15" name="name" id="name">
 						</td>
 					</tr>
 					<tr>
-						<th width="20%">Á¦¸ñ</th>
+						<th width="20%">ì œëª©</th>
 						<td>
 							<input type="text" size="50" name="subject" id="subject">
 						</td>
 					</tr>
 					<tr >
-						<th width="20%">³»¿ë</th>
+						<th width="20%">ë‚´ìš©</th>
 						<td>
 							<textArea cols="70" rows="20" name="content" id="content"></textArea>
 						</td>
 					</tr>
 					<tr>
-						<th width="20%">ºñ¹Ğ¹øÈ£</th>
+						<th width="20%">ë¹„ë°€ë²ˆí˜¸</th>
 						<td>
 							<input type="password" size="15" name="pwd" id="pwd">
 						</td>
@@ -96,8 +96,8 @@
 				<table class="button_table" width="1000px">
 					<tr>
 						<td align="center">
-							<input type="button" value="±Û¾²±â" id="sendBtn" class="btn_normal2">
-							<input type="reset" value="Ãë¼Ò" onclick="javascript:history.back()" class="btn_normal2">
+							<input type="button" value="ê¸€ì“°ê¸°" id="sendBtn" class="btn_normal2">
+							<input type="reset" value="ì·¨ì†Œ" onclick="javascript:history.back()" class="btn_normal2">
 						</td>
 					</tr>
 				</table>
