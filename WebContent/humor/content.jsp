@@ -39,28 +39,26 @@
 				</tr>
 				<tr>
 					<th width="20%">제목</th>
-					<td id="left_td" colspan="3">${dto.subject }</td>
+					<td class="left_td" colspan="3">${dto.subject }</td>
 				</tr>
 				<tr>
 					<td colspan="4" id="cont">
 						<pre>${dto.content }</pre>
 					</td>
 				</tr>
-			</table>			
-			<table class="button_table" width="1000px">
 				<tr>
-					<td align="left">
+					<td colspan="2" class="left_td">
 						<a href="hot.do?page=${page }&no=${dto.no }&list=${plist }">
 		                	<img src="humor/img/like.png" class="btn_icon">   
 		                </a>
 		            	<span class="text_block valign">${dto.hot }</span>
 		            </td>
-					<td align="right">
+					<td colspan="2" class="right_td">
 						<a href="reply.do?no=${dto.no }&page=${page }">
 							<img src="humor/img/btn_reply.png" title="리플" class="btn_icon">
 							<span class="text_block valign">리플</span>
 						</a>&nbsp;&nbsp;
-						<a href="modify.do?no=${dto.no }&page=${page }&list=${plist }">
+						<a href="update.do?no=${dto.no }&page=${page }&list=${plist }">
 							<img src="humor/img/btn_modify.png" title="수정" class="btn_icon">
 							<span class="text_block valign">수정</span>
 						</a>						
@@ -79,8 +77,8 @@
 							<span class="text_block valign">리스트</span>
 						</a>
 					</td>
-				</tr>
-			</table>
+				</tr>				
+			</table>			
 		</div>
 		<div id="footer">
 			<span>&copy;2016 Shin Eun Hye, Kim Ho Hyun, Park Jung Hwan, Jun Jin Tae.</span>

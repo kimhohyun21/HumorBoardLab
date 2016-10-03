@@ -8,6 +8,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>유머 게시판</title>
 	<link rel="stylesheet" type="text/css" href="humor/table.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>	
 </head>
 <body>
 	<div align="center">
@@ -71,7 +72,19 @@
 					<td width="10%">${dto.name }</td>
 					<td width="20%">${dto.regdate }</td>
 					<td width="15%">
-						<progress value="${dto.hot }" max="500"></progress>
+						<!-- progress value="${dto.hot }" max="500"></progress -->					
+						<div id="star_rating" class="${dto.no }"></div>	
+						<script type="text/javascript">
+							$(function(){
+								var $hot=${dto.hot };
+								var $top=((Math.floor(($hot/100)*10))*10);
+								var $position={
+									backgroundPosition: "left "+$top+"%"
+								};
+								$(".${dto.no }").css($position);
+								console.log($position);
+							});
+						</script>	
 					</td>
 					<td width="5%">${dto.hit }</td>		
 				</tr>

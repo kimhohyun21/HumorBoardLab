@@ -16,11 +16,9 @@ h3 {
 }
 #article {
 	padding: 20px;
-
+	min-height: 650px;
 }
 #footer {
-	position: absolute;
-	bottom: 0px;
 	width: 100%;
 	background: url("img/footer_bg.jpg") center center;
 	background-size: cover;	
@@ -46,14 +44,14 @@ table{
 	0%   { top:0px; }
     20%  { top:-3px; }
     50%  { top:35px; }
-    100% { top:0px; }
+    100% { top:20px; }
 }
 
 @keyframes mymove2 {
 	0%   { top:0px; }
     20%  { top:-3px; }
     50%  { top:35px; }
-    100% { top:0px; }
+    100% { top:20px; }
 }
 #list_table, #content_table, .button_table, #insert_table, .del_table {
 	border-collapse: collapse;
@@ -98,9 +96,13 @@ table{
 	vertical-align: top;
 	height: 300px;
 }
-#list_table #left_td, #content_table #left_td {
+#list_table #left_td, #content_table .left_td {
 	text-align: left;
 	padding-left: 10px;
+}
+#content_table .right_td {
+	text-align: right;
+	padding-right: 10px;
 }
 .button_table .right_td {
 	text-align: right;
@@ -194,6 +196,16 @@ a:HOVER, a.h3:HOVER{
 	text-decoration: line-through;
 	background-color: #f2f2f2;
 }
+#star_rating{
+	height: 65%;
+	width: 70%;
+	background: url("img/star.png");
+	background-position-x: left;
+	background-size: cover;
+	overflow: hidden;
+	position: relative;
+	left: 15%;
+}
 input[type="submit"],
 input[type="button"],
 input[type="reset"],
@@ -275,11 +287,61 @@ h1{
 }
 #icon{
    position: relative;
-   top: 100px;
+   top: 150px;
 }
 #button{
    position: relative;
-   top: 200px;
+   top: 250px;
    width: 100px;
    height: 100px;
+   -webkit-animation: rotate 2s; /* Chrome, Safari, Opera */
+   animation: rotate 2s;
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes rotate {
+		0%{ transform: rotate(0deg);}
+	5%{ transform: rotate(20deg);}
+	10%{ transform: rotate(0deg);}
+	15%{ transform: rotate(-20deg);}
+	20%{ transform: rotate(0deg);}
+	25%{ transform: rotate(20deg);}
+	30%{ transform: rotate(0deg);}
+	35%{ transform: rotate(-20deg);}
+	40%{ transform: rotate(0deg);}
+	45%{ transform: rotate(20deg);}
+	50%{ transform: rotate(0deg);}
+	55%{ transform: rotate(-20deg);}
+	60%{ transform: rotate(0deg);}
+	65%{ transform: rotate(20deg);}
+	70%{ transform: rotate(0deg);}
+	75%{ transform: rotate(-20deg);}
+	80%{ transform: rotate(0deg);}
+	85%{ transform: rotate(20deg);}
+	90%{ transform: rotate(0deg);}
+	95%{ transform: rotate(-20deg);}
+	100%{ transform: rotate(0deg);}
+}
+
+@keyframes rotate {
+	0%{ transform: rotate(0deg);}
+	5%{ transform: rotate(20deg);}
+	10%{ transform: rotate(0deg);}
+	15%{ transform: rotate(-20deg);}
+	20%{ transform: rotate(0deg);}
+	25%{ transform: rotate(20deg);}
+	30%{ transform: rotate(0deg);}
+	35%{ transform: rotate(-20deg);}
+	40%{ transform: rotate(0deg);}
+	45%{ transform: rotate(20deg);}
+	50%{ transform: rotate(0deg);}
+	55%{ transform: rotate(-20deg);}
+	60%{ transform: rotate(0deg);}
+	65%{ transform: rotate(20deg);}
+	70%{ transform: rotate(0deg);}
+	75%{ transform: rotate(-20deg);}
+	80%{ transform: rotate(0deg);}
+	85%{ transform: rotate(20deg);}
+	90%{ transform: rotate(0deg);}
+	95%{ transform: rotate(-20deg);}
+	100%{ transform: rotate(0deg);}
 }

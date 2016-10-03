@@ -3,15 +3,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:if test="${bCheck==true}">
+	<script type="text/javascript">
+		alert("삭제되었습니다.");
+	</script>	
 	<c:if test="${plist==1 }">
 		<script type="text/javascript">
-			alert("삭제되었습니다.");
-			location.href="tile.do?page="+${page };
+			location.href="tile.do?page=${page }";
 		</script>
 	</c:if>
 	<script type="text/javascript">
-		alert("삭제되었습니다.");
-		location.href="list.do?page="+${page };
+		location.href="list.do?page=${page }";
 	</script>
 </c:if>
 

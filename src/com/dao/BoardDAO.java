@@ -370,4 +370,72 @@ public class BoardDAO {
 		
 		return bCheck;
 	}
+	
+	//update할 글 불러오기 
+	public BoardDTO boardContentData2(int no){
+		BoardDTO dto=new BoardDTO();
+
+		try{
+			getConnection();
+
+			String sql="SELECT no, name, subject, content FROM humorboard WHERE no=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1,no);
+			ResultSet rs= ps.executeQuery();
+			rs.next();
+			
+			dto.setNo(rs.getInt(1));
+			dto.setName(rs.getString(2));
+			dto.setSubject(rs.getString(3));
+			dto.setContent(rs.getString(4));
+
+			rs.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
+
+		return dto;
+	}
+	
+	//update 하기
+	public boolean boardUpdate(BoardDTO dto){
+		boolean bCheck=false;
+		
+		try{
+			getConnection();
+			
+			//패스워드 확인
+			String sql="SELECT pwd FROM humorboard WHERE no=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, dto.getNo());
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			String dbpwd=rs.getString(1);
+			rs.close();
+			ps.close();
+			System.out.println(dbpwd);
+			System.out.println(dto.getPwd());
+			if(dbpwd.equals(dto.getPwd())){
+				sql="UPDATE humorboard SET name=?, subject=?, content=?, regdate=SYSDATE WHERE no=?";
+				ps=conn.prepareStatement(sql);
+				ps.setString(1, dto.getName());
+				ps.setString(2, dto.getSubject());
+				ps.setString(3, dto.getContent());
+				ps.setInt(4, dto.getNo());
+				ps.executeUpdate();
+				
+				bCheck=true;
+			}else{
+				bCheck=false;
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
+		return bCheck;
+	}
 }
