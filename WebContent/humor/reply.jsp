@@ -56,7 +56,7 @@
 <body>
 	<div align="center">
 		<div id="header">
-			<h3>HUMOR BOARD</h3>
+			<h3><a href="cover.do" class="h3">HUMOR BOARD</a></h3>
 		</div>
 		<div id="article">
 			<table width="50%" class="button_table">
