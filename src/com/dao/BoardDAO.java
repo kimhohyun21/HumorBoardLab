@@ -37,18 +37,15 @@ public class BoardDAO {
 		try{
 			getConnection();
 			String sql = null;
-			System.out.println(fs);
-			if(fs==null && fi==null){
-				sql = "SELECT no, subject, name, regdate, hit, group_tab, TO_CHAR(regdate, 'YYYY-MM-DD'), hot "
-						+ "FROM humorboard ORDER BY group_id DESC, group_step ASC";
-			}else{
+			if(fs!=null && fi!=null){
 				sql = "SELECT no, subject, name, regdate, hit, group_tab, TO_CHAR(regdate, 'YYYY-MM-DD'), hot "
 						+ "FROM humorboard "
 						+ "WHERE "+fs+" LIKE '%"+fi+"%' ORDER BY group_id DESC, group_step ASC";
+			}else{				
+				sql = "SELECT no, subject, name, regdate, hit, group_tab, TO_CHAR(regdate, 'YYYY-MM-DD'), hot "
+						+ "FROM humorboard ORDER BY group_id DESC, group_step ASC";
 			}
-			
-			System.out.println(fi);
-			
+			System.out.println(sql);
 			ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			
@@ -128,7 +125,6 @@ public class BoardDAO {
 			}else{
 				sql = "SELECT CEIL(COUNT(*)/10) FROM humorboard";
 			}
-			
 			ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			rs.next();

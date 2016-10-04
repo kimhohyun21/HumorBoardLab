@@ -24,8 +24,11 @@ public class ListModel implements Model{
 		
 		//검색을 위한 파라미터
 		String fs=request.getParameter("fs");
+		if(fs==""){fs=null;};
+		System.out.println(fs);
 		String fi=request.getParameter("fi");
-		
+		if(fi==""){fi=null;};
+		System.out.println(fi);
 		//삭제된 게시물 관리를 위한 파라미터
 		String msg="게시자에 의해서 삭제된 게시물입니다.";
 		

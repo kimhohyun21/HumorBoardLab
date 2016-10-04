@@ -256,7 +256,6 @@ input[type="password"]{
    -webkit-animation: mymove 2s; /* Chrome, Safari, Opera */
    animation: mymove 2s;	
 }
-
 /* Chrome, Safari, Opera */
 @-webkit-keyframes mymove {
 	0%   { left:0px; }
@@ -272,6 +271,7 @@ input[type="password"]{
     100% { left:0px; }
 }
 #tiletd{
+   max-width: 300px;
    border: 1px solid #a9aeb2;
    -webkit-border-radius: 20px;
    -mox-border-radius: 20px;

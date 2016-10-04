@@ -11,7 +11,17 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			$("#sendBtn").click(function(){
+			$('#sendBtn').click(function(){
+				submit();
+			});
+			
+			$('input').keypress(function(key) {
+				if(key.keyCode == 13){
+					submit();
+				}
+			});
+			
+			submit=function(){
 				var $fs=$("#fs").val();
 				if($fs.trim()==""){
 					alert("검색 항목을 선택해주세요.");
@@ -25,7 +35,7 @@
 					return;
 				}
 				$("#frm").submit();
-			});
+			}
 		});
 	</script>	
 </head>
