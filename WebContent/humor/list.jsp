@@ -45,7 +45,7 @@
 			<h3><a href="cover.do" class="h3">HUMOR BOARD</a></h3>
 		</div>
 		<div id="article">
-			<table width="1500px" class="button_table">
+			<table width="80%" class="button_table">
 				<tr>
 					<td width="50%">
 						<a href="tile.do?page=${curPage>tileTotal ? tileTotal : curPage }">
@@ -75,7 +75,7 @@
 					</td>
 				</tr>
 			</table>
-			<table id="list_table" width="1500px">
+			<table id="list_table" width="80%">
 				<tr>
 					<th width="5%">번호</th>
 					<th width="45%">제목</th>
@@ -131,7 +131,7 @@
 				</tr>
 			</c:forEach>
 			</table>
-			<table class="button_table" width="1500px">
+			<table class="button_table" width="80%">
 				<tr>
 					<td width="90%" align="center">
 					      <!-- 

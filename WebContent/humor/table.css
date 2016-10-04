@@ -16,7 +16,7 @@ h3 {
 }
 #article {
 	padding: 20px;
-	min-height: 650px;
+	min-height: 660px;
 }
 #footer {
 	width: 100%;
@@ -271,7 +271,6 @@ input[type="password"]{
     100% { left:0px; }
 }
 #tiletd{
-   max-width: 300px;
    border: 1px solid #a9aeb2;
    -webkit-border-radius: 20px;
    -mox-border-radius: 20px;
@@ -290,8 +289,8 @@ input[type="password"]{
    background-repeat: no-repeat;
    text-align: center;
 }
-#table_content td{
-   width: 300px;
+#table_content td {
+   width: 270px;
    font-weight: bolder;
    padding: 10px;	
 }

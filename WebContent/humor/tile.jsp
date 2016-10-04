@@ -35,7 +35,7 @@
 		<h3><a href="cover.do" class="h3">HUMOR BOARD</a></h3>
 	</div>
 	<div id="article">
-		<table width="1500px" class="button_table">
+		<table width="80%" class="button_table">
 			<tr>
 				<td width="50%">
 					<a href="tile.do?page=${curPage }">
@@ -65,7 +65,7 @@
 				</td>
 			</tr>
 		</table>
-		<table width="1500" id="table_content">
+		<table id="table_content">
 		   <tr height="200">
 		      <c:forEach var="dto" begin="0" end="4" step="1" items="${list }">	
 		      <td id="tiletd" onclick="location.href='content.do?page=${curPage }&no=${dto.no }&list=${plist }'">     
@@ -121,7 +121,7 @@
 		   </tr>
 		</table>
 		
-		<table class="button_table" width="1500">
+		<table class="button_table" width="80%">
 	      <tr>
 	         <td width="90%" align="center">
 	         <!-- 

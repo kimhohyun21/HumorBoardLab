@@ -59,7 +59,7 @@
 			<h3><a href="cover.do" class="h3">HUMOR BOARD</a></h3>
 		</div>
 		<div id="article">
-			<table width="1000px" class="button_table">
+			<table width="50%" class="button_table">
 				<tr>
 					<td align="center">
 						<span class="btn_title">수정하기</span>
@@ -67,7 +67,7 @@
 				</tr>
 			</table>
 			<form action="update_ok.do?page=${page }&list=${plist }&fs=${fs }&fi=${fi }" method="post" name="frm" id="frm">
-				<table id="insert_table" width="1000px">
+				<table id="insert_table" width="50%">
 					<tr>
 						<th width="20%">이름</th>
 						<td>
@@ -94,7 +94,7 @@
 						</td>
 					</tr>
 				</table>
-				<table class="button_table" width="1000px">
+				<table class="button_table" width="50%">
 					<tr>
 						<td align="center">
 							<input type="button" value="글쓰기" id="sendBtn" class="btn_normal2">

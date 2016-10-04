@@ -15,14 +15,14 @@
 			<h3><a href="cover.do" class="h3">HUMOR BOARD</a></h3>
 		</div>
 		<div id="article">
-			<table width="1000px" class="button_table">
+			<table width="50%" class="button_table">
 				<tr>
 					<td align="center">
 						<span class="btn_title">상세보기</span>
 					</td>
 				</tr>
 			</table>
-			<table id="content_table" width="1000px">
+			<table id="content_table" width="50%">
 				<tr>
 					<th width="20%">번호</th>
 					<td width="30%">${dto.no }</td>
@@ -47,13 +47,13 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" class="left_td">
+					<td class="left_td">
 						<a href="hot.do?page=${page }&no=${dto.no }&list=${plist }&fs=${fs }&fi=${fi }">
 		                	<img src="humor/img/like.png" class="btn_icon">   
 		                </a>
 		            	<span class="text_block valign">${dto.hot }</span>
 		            </td>
-					<td colspan="2" class="right_td">
+					<td colspan="3" class="right_td">
 						<a href="reply.do?no=${dto.no }&page=${page }">
 							<img src="humor/img/btn_reply.png" title="리플" class="btn_icon">
 							<span class="text_block valign">리플</span>
