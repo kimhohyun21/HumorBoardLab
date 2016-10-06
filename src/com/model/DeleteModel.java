@@ -7,7 +7,7 @@ public class DeleteModel implements Model {
 
 	@Override
 	public String handlerRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("EUC-KR");
 		String no=request.getParameter("no");
 		String page=request.getParameter("page");
 		String plist=request.getParameter("list");

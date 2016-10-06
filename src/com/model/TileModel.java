@@ -14,6 +14,7 @@ public class TileModel implements Model {
 
 	@Override
 	public String handlerRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("EUC-KR");
 		BoardDAO dao=new BoardDAO();
 		String strPage=request.getParameter("page"); 
 		if(strPage==null){strPage="1"; }

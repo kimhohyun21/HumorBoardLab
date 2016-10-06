@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:if test="${bCheck==true}">
 	<script type="text/javascript">
-		alert("삭제되었습니다.");
+		alert("�����Ǿ����ϴ�.");
 	</script>	
 	<c:if test="${plist==1 }">
 		<script type="text/javascript">
@@ -18,7 +18,7 @@
 
 <c:if test="${bCheck==false}">
 	<script type="text/javascript">
-		alert("비밀번호가 틀립니다.");
+		alert("��й�ȣ�� Ʋ���ϴ�.");
 		history.back();
 	</script>
 </c:if>

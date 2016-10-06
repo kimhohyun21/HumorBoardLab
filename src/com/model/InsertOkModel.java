@@ -9,7 +9,7 @@ public class InsertOkModel implements Model {
 
 	@Override
 	public String handlerRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("EUC-KR");
 		
 		String name=request.getParameter("name");
 		String subject=request.getParameter("subject");

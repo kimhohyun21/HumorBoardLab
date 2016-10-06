@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:if test="${bCheck==false }">
 	<script type="text/javascript">
-		alert("ë¹„ë°€ë²ˆí˜¸ê°€ ìž˜ ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.");
+		alert("ºñ¹Ð¹øÈ£°¡ Àß ¸øµÇ¾ú½À´Ï´Ù.");
 		history.back();
 	</script>
 </c:if>
 <c:if test="${bCheck==true }">
 	<script type="text/javascript">
-		alert("ìˆ˜ì • ë˜ì—ˆìŠµë‹ˆë‹¤.");
+		alert("¼öÁ¤ µÇ¾ú½À´Ï´Ù.");
 	</script>
 	<c:if test="${plist==1 }">
 		<script type="text/javascript">

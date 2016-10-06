@@ -9,7 +9,7 @@ public class DeleteOkModel implements Model{
 
 	@Override
 	public String handlerRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("EUC-KR");
 		String pwd = request.getParameter("pwd");
 		String no = request.getParameter("no");
 		String page = request.getParameter("page");

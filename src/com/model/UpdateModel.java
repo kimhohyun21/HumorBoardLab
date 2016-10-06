@@ -10,7 +10,7 @@ public class UpdateModel implements Model {
 	@Override
 	public String handlerRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("EUC-KR");
 		String plist=request.getParameter("list");
 		String strPage=request.getParameter("page");
 		String strNo=request.getParameter("no");

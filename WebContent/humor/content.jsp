@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>ìƒì„¸ ë³´ê¸°</title>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>»ó¼¼ º¸±â</title>
 <link rel="stylesheet" type="text/css" href="humor/table.css">
 </head>
 <body>
@@ -18,27 +18,27 @@
 			<table width="50%" class="button_table">
 				<tr>
 					<td align="center">
-						<span class="btn_title">ìƒì„¸ë³´ê¸°</span>
+						<span class="btn_title">»ó¼¼º¸±â</span>
 					</td>
 				</tr>
 			</table>
 			<table id="content_table" width="50%">
 				<tr>
-					<th width="20%">ë²ˆí˜¸</th>
+					<th width="20%">¹øÈ£</th>
 					<td width="30%">${dto.no }</td>
 					
-					<th width="20%">ìž‘ì„±ì¼</th>
+					<th width="20%">ÀÛ¼ºÀÏ</th>
 					<td width="30%">${dto.regdate }</td>
 				</tr>
 				<tr>
-					<th width="20%">ì´ë¦„</th>
+					<th width="20%">ÀÌ¸§</th>
 					<td width="30%">${dto.name }</td>
 					
-					<th width="20%">ì¡°íšŒìˆ˜</th>
+					<th width="20%">Á¶È¸¼ö</th>
 					<td width="30%">${dto.hit }</td>
 				</tr>
 				<tr>
-					<th width="20%">ì œëª©</th>
+					<th width="20%">Á¦¸ñ</th>
 					<td class="left_td" colspan="3">${dto.subject }</td>
 				</tr>
 				<tr>
@@ -55,17 +55,17 @@
 		            </td>
 					<td colspan="3" class="right_td">
 						<a href="reply.do?no=${dto.no }&page=${page }">
-							<img src="humor/img/btn_reply.png" title="ë¦¬í”Œ" class="btn_icon">
-							<span class="text_block valign">ë¦¬í”Œ</span>
+							<img src="humor/img/btn_reply.png" title="¸®ÇÃ" class="btn_icon">
+							<span class="text_block valign">¸®ÇÃ</span>
 						</a>&nbsp;&nbsp;
 						<a href="update.do?no=${dto.no }&page=${page }&list=${plist }&fs=${fs }&fi=${fi }">
-							<img src="humor/img/btn_modify.png" title="ìˆ˜ì •" class="btn_icon">
-							<span class="text_block valign">ìˆ˜ì •</span>
+							<img src="humor/img/btn_modify.png" title="¼öÁ¤" class="btn_icon">
+							<span class="text_block valign">¼öÁ¤</span>
 						</a>						
 						&nbsp;&nbsp;
 						<a href="delete.do?no=${dto.no }&page=${page }&list=${plist }&fs=${fs }&fi=${fi }">
-							<img src="humor/img/btn_delete.png" title="ì‚­ì œ" class="btn_icon">
-							<span class="text_block valign">ì‚­ì œ</span>
+							<img src="humor/img/btn_delete.png" title="»èÁ¦" class="btn_icon">
+							<span class="text_block valign">»èÁ¦</span>
 						</a>
 						&nbsp;&nbsp;
 						<c:set var="url" value="list.do?page=${page }&fs=${fs }&fi=${fi }"></c:set>
@@ -73,8 +73,8 @@
 							<c:set var="url" value="tile.do?page=${page }"></c:set>
 						</c:if>
 						<a href="${url }">						
-							<img src="humor/img/btn_list.png" title="ë¦¬ìŠ¤íŠ¸" class="btn_icon">
-							<span class="text_block valign">ë¦¬ìŠ¤íŠ¸</span>
+							<img src="humor/img/btn_list.png" title="¸®½ºÆ®" class="btn_icon">
+							<span class="text_block valign">¸®½ºÆ®</span>
 						</a>
 					</td>
 				</tr>				

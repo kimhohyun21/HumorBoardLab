@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>ì‚­ì œí•˜ê¸°</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<title>»èÁ¦ÇÏ±â</title>
 	<link rel="stylesheet" type="text/css" href="humor/table.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript">
@@ -26,14 +26,14 @@
 			<table class="button_table del_align" width="300px">
 				<tr>
 					<td>
-						<font size="5px" color="gray">[ ì‚­ì œí•˜ê¸° ]</font>
+						<font size="5px" color="gray">[ »èÁ¦ÇÏ±â ]</font>
 					</td>
 				</tr>
 			</table>
 			<form action="delete_ok.do" method="post" id="frm">
 			<table class="del_table del_align" width="300px">
 				<tr>
-					<th>ë¹„ë°€ë²ˆí˜¸</th>
+					<th>ºñ¹Ð¹øÈ£</th>
 				</tr>
 				<tr>
 					<td>
@@ -49,8 +49,8 @@
 			<table class="button_table del_align" width="300px">
 				<tr>
 					<td colspan="2" align="center">
-						<input type="submit" value="ì‚­ì œ" class="btn_normal2">
-						<input type="button" value="ì·¨ì†Œ" onclick="javascript:history.back()" class="btn_normal2">
+						<input type="submit" value="»èÁ¦" class="btn_normal2">
+						<input type="button" value="Ãë¼Ò" onclick="javascript:history.back()" class="btn_normal2">
 					</td>
 				</tr>
 			</table>

@@ -12,7 +12,7 @@ public class ListModel implements Model{
  */
 	@Override
 	public String handlerRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("EUC-KR");
 		//메서드 사용을 위한 dao class생성
 		BoardDAO dao=new BoardDAO();
 		

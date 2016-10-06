@@ -12,7 +12,7 @@ public class HotModel implements Model {
 	public String handlerRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		BoardDAO dao=new BoardDAO();
 		
-		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("EUC-KR");
 		String strNo=request.getParameter("no");
 		String strPage=request.getParameter("page");
 		String plist=request.getParameter("list");

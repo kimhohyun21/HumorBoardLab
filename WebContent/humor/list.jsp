@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>ìœ ë¨¸ ê²Œì‹œíŒ</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<title>À¯¸Ó °Ô½ÃÆÇ</title>
 	<link rel="stylesheet" type="text/css" href="humor/table.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript">
@@ -24,13 +24,13 @@
 			submit=function(){
 				var $fs=$("#fs").val();
 				if($fs.trim()==""){
-					alert("ê²€ìƒ‰ í•­ëª©ì„ ì„ íƒí•´ì£¼ì„¸ìš”.");
+					alert("°Ë»ö Ç×¸ñÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
 					$("#fs").focus();
 					return;
 				}
 				var $fi=$("#fi").val();
 				if($fi.trim()==""){
-					alert("ê²€ìƒ‰ì–´ë¥¼ ìž…ë ¥ í•´ì£¼ì„¸ìš”.");
+					alert("°Ë»ö¾î¸¦ ÀÔ·Â ÇØÁÖ¼¼¿ä.");
 					$("#fi").focus();
 					return;
 				}
@@ -50,39 +50,39 @@
 					<td width="50%">
 						<a href="tile.do?page=${curPage>tileTotal ? tileTotal : curPage }">
 							<button class="btn_list">
-								<img alt="tile" title="íƒ€ì¼í˜•" src="humor/img/tile_icon.png" class="btn_icon">
-								<span class="text_block valign">íƒ€ì¼í˜• ë³´ê¸°</span>
+								<img alt="tile" title="Å¸ÀÏÇü" src="humor/img/tile_icon.png" class="btn_icon">
+								<span class="text_block valign">Å¸ÀÏÇü º¸±â</span>
 							</button>
 						</a>
 						<a href="list.do?page=${curPage }">
 							<button class="btn_list click">
-								<img alt="list" title="ë¦¬ìŠ¤íŠ¸í˜•" src="humor/img/list_icon.png" class="btn_icon">
-								<span class="text_block valign">ë¦¬ìŠ¤íŠ¸í˜• ë³´ê¸°</span>
+								<img alt="list" title="¸®½ºÆ®Çü" src="humor/img/list_icon.png" class="btn_icon">
+								<span class="text_block valign">¸®½ºÆ®Çü º¸±â</span>
 							</button>
 						</a>
 					</td>
 					<td class="find_td">
 						<form action="list.do" method="post" name="frm" id="frm">
 							<select name="fs" id="fs">
-								<option value="">ì„ íƒ</option>
-								<option value="name">ì´ë¦„</option>
-								<option value="subject">ì œëª©</option>
-								<option value="content">ë‚´ìš©</option>
+								<option value="">¼±ÅÃ</option>
+								<option value="name">ÀÌ¸§</option>
+								<option value="subject">Á¦¸ñ</option>
+								<option value="content">³»¿ë</option>
 							</select>
 							<input type="text" size="20px" name="fi" id="fi">							
-							<input type="button" value="ê²€ìƒ‰" id="sendBtn" class="btn_normal">
+							<input type="button" value="°Ë»ö" id="sendBtn" class="btn_normal">
 						</form>
 					</td>
 				</tr>
 			</table>
 			<table id="list_table" width="80%">
 				<tr>
-					<th width="5%">ë²ˆí˜¸</th>
-					<th width="45%">ì œëª©</th>
-					<th width="10%">ì´ë¦„</th>
-					<th width="20%">ìž‘ì„±ì¼</th>
-					<th	width="15%">ì¶”ì²œìˆ˜</th>
-					<th width="5%">ì¡°íšŒìˆ˜</th>				
+					<th width="5%">¹øÈ£</th>
+					<th width="45%">Á¦¸ñ</th>
+					<th width="10%">ÀÌ¸§</th>
+					<th width="20%">ÀÛ¼ºÀÏ</th>
+					<th	width="15%">ÃßÃµ¼ö</th>
+					<th width="5%">Á¶È¸¼ö</th>				
 				</tr>
 			<c:forEach var="dto" items="${list }">
 			<c:set var="tr_id" value="normal"></c:set>
@@ -141,7 +141,7 @@
 					<a href="list.do?page=1">
 					   <button class="btn_normal2">&lt;&lt; first</button>  
 					</a>
-					<!-- ê¸°ë³¸ì ìœ¼ë¡œëŠ” 5íŽ˜ì´ì§€ ë‹¨ìœ„ë¡œ íŽ˜ì´ì§€ ì´ë™, ì²˜ìŒ ë¸”ë¡ê³¼ ë§ˆì§€ë§‰ ë¸”ë¡ì—ì„œë§Œ 1íŽ˜ì´ì§€ì”© ì´ë™ -->
+					<!-- ±âº»ÀûÀ¸·Î´Â 5ÆäÀÌÁö ´ÜÀ§·Î ÆäÀÌÁö ÀÌµ¿, Ã³À½ ºí·Ï°ú ¸¶Áö¸· ºí·Ï¿¡¼­¸¸ 1ÆäÀÌÁö¾¿ ÀÌµ¿ -->
 					<c:if test="${curPage>block }">
 					<a href="list.do?page=${fromPage-1}&fs=${fs }&fi=${fi }">
 					  	 <button class="btn_normal2">&lt; prev</button>                    
@@ -180,8 +180,8 @@
 					</td>
 					<td class="right_td">
 						<a href="insert.do?list=${plist }">
-							<img src="humor/img/btn_write.png" title="ê¸€ì“°ê¸°" class="btn_icon">
-					        <span class="text_block valign">ê¸€ì“°ê¸°</span>
+							<img src="humor/img/btn_write.png" title="±Û¾²±â" class="btn_icon">
+					        <span class="text_block valign">±Û¾²±â</span>
 						</a>
 					</td>
 				</tr>
