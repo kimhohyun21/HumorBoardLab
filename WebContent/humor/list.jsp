@@ -119,6 +119,7 @@
 							$(function(){
 								var $hot=${dto.hot };
 								var $top=((Math.floor(($hot/100)*10))*10);
+								if($top>100){$top=100};
 								var $position={
 									backgroundPosition: "left "+$top+"%"
 								};
